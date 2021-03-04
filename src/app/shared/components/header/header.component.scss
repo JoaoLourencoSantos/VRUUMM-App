@@ -1,0 +1,19 @@
+.navbar-brand{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5%;
+
+  .main-logo {
+    border-radius: 50%;
+  }
+
+  span {
+    margin-left: 15%;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+}
+
