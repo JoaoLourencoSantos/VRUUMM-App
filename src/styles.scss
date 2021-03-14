@@ -1,2 +1,75 @@
-@import "variables";
-@import "~bootstrap/scss/bootstrap.scss";
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import 'variables';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~bootstrap/scss/bootstrap.scss';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//////////////////////
+/// TABS STYLE
+//////////////////////
+
+.mat-tab-header {
+  border-bottom: none;
+}
+
+.mat-tab-label {
+  color: White;
+  opacity: 1 !important;
+  min-width: 60px !important;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: White !important;
+  height: 3px;
+  border-radius: 55px 55px;
+}
+
+.mat-tab-group {
+  height: 100%;
+}
+
+.mat-tab-body-wrapper {
+  flex-grow: 1;
+}
+
+.mat-tab-body {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.mat-tab-body-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+//////////////////////
+/// FORM FIELD STYLE
+//////////////////////
+input.rounded-input {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 50px;
+  border: none;
+  padding: 15px 10px;
+  padding-left: 50px;
+  color: rgba(0, 0, 0, 0.836);
+  font-size: 1.2rem;
+
+  margin-bottom: 5%;
+}
+
+input.rounded-input:focus {
+  outline: none;
+  color: rgb(0, 0, 0);
+}
