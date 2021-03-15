@@ -12,8 +12,8 @@
 
         <form class="box-form" >
 
-          <input name="email" class="rounded-input" matInput placeholder="Digite o seu email:" [(ngModel)]="email">
-          <input name="pass" class="rounded-input" type="password" matInput placeholder="Digite a sua senha:" [(ngModel)]="pass">
+          <input name="email" class="rounded-input" matInput placeholder="Digite o seu email" [(ngModel)]="email">
+          <input name="pass" class="rounded-input" type="password" matInput placeholder="Digite a sua senha" [(ngModel)]="pass">
 
           <div class="box-button">
             <button type="submit" class="btn-submit" (click)="auth()">ENTRAR</button>
@@ -26,10 +26,10 @@
 
         <form class="box-form">
 
-          <input name="register-name"class="rounded-input" matInput placeholder="Digite o seu nome:" [(ngModel)]="newUser.nomeUsuario">
-          <input name="register-email"class="rounded-input" matInput placeholder="Digite o seu email:" [(ngModel)]="newUser.emailUsuario">
-          <input name="register-pass"class="rounded-input" type="password" matInput placeholder="Digite a sua senha:" [(ngModel)]="newUser.senhaUsuario">
-          <input name="register-confirm"class="rounded-input" type="password" matInput placeholder="Confirme a sua senha:" [(ngModel)]="confirmNewPass">
+          <input name="register-name"class="rounded-input" matInput placeholder="Digite o seu nome" [(ngModel)]="newUser.nomeUsuario">
+          <input name="register-email"class="rounded-input" matInput placeholder="Digite o seu email" [(ngModel)]="newUser.emailUsuario">
+          <input name="register-pass"class="rounded-input" type="password" matInput placeholder="Digite a sua senha" [(ngModel)]="newUser.senhaUsuario">
+          <input name="register-confirm"class="rounded-input" type="password" matInput placeholder="Confirme a sua senha" [(ngModel)]="confirmNewPass">
 
           <div class="box-button">
             <button type="submit" class="btn-submit" (click)="register()">CADASTRAR</button>
