@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.toast.successAlert();
+
     this.router.navigate(['/', 'app']);
   };
 
@@ -72,16 +74,20 @@ export class LoginComponent implements OnInit {
     this.newUser.trim();
 
     if (!this.newUser.isPassValid()) {
-      this.toast.baseWarnAlertWithMessage('a senha deve conter ao menos 6 caracteres, tente uma nova senha!');
+      this.toast.baseWarnAlertWithMessage(
+        'a senha deve conter ao menos 6 caracteres, tente uma nova senha!'
+      );
       return;
     }
 
     this.loginService.create(this.newUser).subscribe((result) => {
-      console.log(result)
+      console.log(result);
       if (result && !result.sucesso) {
         this.toast.errorAuth(result.mensagem);
         return;
       }
+
+      this.toast.successAlert();
 
       this.router.navigate(['/', 'app']);
     });
