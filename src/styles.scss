@@ -13,6 +13,33 @@ body {
 }
 
 //////////////////////
+/// SCROLL STYLE
+//////////////////////
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 10px;
+	-webkit-border-radius: 16px;
+}
+
+::-webkit-scrollbar-track-piece {
+	background-color: #c5cae9;
+	-webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	height: 5px;
+	background-color: #9e9e9e;
+	-webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+	width: 5px;
+	background-color: #9e9e9e;
+	-webkit-border-radius: 3px;
+}
+
+//////////////////////
 /// TABS STYLE
 //////////////////////
 
@@ -72,4 +99,35 @@ input.rounded-input {
 input.rounded-input:focus {
   outline: none;
   color: rgb(0, 0, 0);
+}
+
+//////////////////////
+/// TOAST STYLE
+//////////////////////
+.snack-success {
+	font-weight: 700;
+	color: white !important;
+	background-color: #0cb05b !important;
+	.mat-simple-snackbar-action {
+		color: white !important;
+	}
+}
+
+.snack-error {
+	font-weight: 700;
+	color: white !important;
+	background-color: #c20c36 !important;
+	.mat-simple-snackbar-action {
+		color: white !important;
+	}
+}
+
+
+.snack-warn {
+	font-weight: 700;
+	color: white !important;
+	background-color: #ea8d16 !important;
+	.mat-simple-snackbar-action {
+		color: white !important;
+	}
 }

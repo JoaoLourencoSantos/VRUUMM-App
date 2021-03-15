@@ -4,12 +4,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const material = [
   MatFormFieldModule,
   MatTabsModule,
   MatIconModule,
   MatInputModule,
+  MatSnackBarModule
 ];
 const general = [CommonModule];
 

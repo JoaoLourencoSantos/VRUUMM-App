@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  API_BASEPATH: 'https://vrum-api.herokuapp.com',
 };
