@@ -22,7 +22,7 @@
           <div class="input-icon">
             <input [type]="passwordHide ? 'password' : 'text'" name="pass" matInput placeholder="Digite a sua senha"
               [(ngModel)]="pass">
-            <mat-icon matSuffix (click)="passwordHide = !passwordHide">
+            <mat-icon class="cliclable" matSuffix (click)="passwordHide = !passwordHide">
               {{passwordHide ? 'visibility_off' :'visibility'}}
             </mat-icon>
           </div>
@@ -53,7 +53,7 @@
           <div class="input-icon">
             <input [type]="passwordHide ? 'password' : 'text'" name="register-pass" class="rounded-input" matInput
               placeholder="Digite a sua senha" [(ngModel)]="newUser.senhaUsuario">
-            <mat-icon matSuffix (click)="passwordHide = !passwordHide">
+            <mat-icon class="cliclable" matSuffix (click)="passwordHide = !passwordHide">
               {{passwordHide ? 'visibility_off' :'visibility'}}
             </mat-icon>
           </div>
