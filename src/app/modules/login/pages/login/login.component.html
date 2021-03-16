@@ -10,10 +10,22 @@
     <mat-tab-group>
       <mat-tab label="Login">
 
-        <form class="box-form" >
+        <form class="box-form" (ngSubmit)="auth()">
 
-          <input name="email" class="rounded-input" matInput placeholder="Digite o seu email" [(ngModel)]="email">
-          <input name="pass" class="rounded-input" type="password" matInput placeholder="Digite a sua senha" [(ngModel)]="pass">
+
+          <div class="input-icon">
+            <input name="email" matInput placeholder="Digite o seu email" [(ngModel)]="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </div>
+
+
+          <div class="input-icon">
+            <input [type]="passwordHide ? 'password' : 'text'" name="pass" matInput placeholder="Digite a sua senha"
+              [(ngModel)]="pass">
+            <mat-icon matSuffix (click)="passwordHide = !passwordHide">
+              {{passwordHide ? 'visibility_off' :'visibility'}}
+            </mat-icon>
+          </div>
 
           <div class="box-button">
             <button type="submit" class="btn-submit" (click)="auth()">ENTRAR</button>
@@ -26,10 +38,30 @@
 
         <form class="box-form">
 
-          <input name="register-name"class="rounded-input" matInput placeholder="Digite o seu nome" [(ngModel)]="newUser.nomeUsuario">
-          <input name="register-email"class="rounded-input" matInput placeholder="Digite o seu email" [(ngModel)]="newUser.emailUsuario">
-          <input name="register-pass"class="rounded-input" type="password" matInput placeholder="Digite a sua senha" [(ngModel)]="newUser.senhaUsuario">
-          <input name="register-confirm"class="rounded-input" type="password" matInput placeholder="Confirme a sua senha" [(ngModel)]="confirmNewPass">
+          <div class="input-icon">
+            <input name="register-name" type="text" matInput placeholder="Digite o seu nome"
+              [(ngModel)]="newUser.nomeUsuario">
+            <mat-icon matSuffix>person</mat-icon>
+          </div>
+
+          <div class="input-icon">
+            <input name="register-email" class="rounded-input" matInput placeholder="Digite o seu email"
+              [(ngModel)]="newUser.emailUsuario">
+            <mat-icon matSuffix>email</mat-icon>
+          </div>
+
+          <div class="input-icon">
+            <input [type]="passwordHide ? 'password' : 'text'" name="register-pass" class="rounded-input" matInput
+              placeholder="Digite a sua senha" [(ngModel)]="newUser.senhaUsuario">
+            <mat-icon matSuffix (click)="passwordHide = !passwordHide">
+              {{passwordHide ? 'visibility_off' :'visibility'}}
+            </mat-icon>
+          </div>
+
+          <div class="input-icon">
+            <input [type]="passwordHide ? 'password' : 'text'" name="register-confirm" class="rounded-input" matInput
+              placeholder="Confirme a sua senha" [(ngModel)]="confirmNewPass">
+          </div>
 
           <div class="box-button">
             <button type="submit" class="btn-submit" (click)="register()">CADASTRAR</button>

@@ -83,22 +83,29 @@ body {
 //////////////////////
 /// FORM FIELD STYLE
 //////////////////////
-input.rounded-input {
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
+.input-icon{
+  background-color: white !important;
   border-radius: 50px;
-  border: none;
-  padding: 20px 10px;
-  padding-left: 50px;
-  color: rgba(0, 0, 0, 0.836);
-  font-size: 1.2rem;
+  width: 90%;
+  height: 9%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
 
-  margin-bottom: 6%;
-}
+  margin-bottom: 5%;
 
-input.rounded-input:focus {
-  outline: none;
-  color: rgb(0, 0, 0);
+  input {
+    width: 85%;
+    height: 90%;
+    border: none;
+    background: transparent;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
 }
 
 //////////////////////
