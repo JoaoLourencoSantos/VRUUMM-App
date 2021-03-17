@@ -1,3 +1,119 @@
-.mat-progress-bar {
-  position: absolute;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.icon-credit {
+  position: fixed;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+
+  a {
+    color: #222;
+  }
+}
+
+.loader {
+  z-index: 1515;
+  background: rgba(0, 0, 0, 0.705);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation: tracks 10s linear forwards;
+
+    border: 11px solid rgb(255, 255, 255);
+  }
+
+  &::before {
+    width: 265px;
+    height: 265px;
+    border: 11px solid rgb(255, 255, 255);
+  }
+
+  &::after {
+    width: 95px;
+    height: 95px;
+    border: 8px solid rgb(255, 255, 255);
+  }
+}
+
+.car {
+  position: relative;
+  z-index: 1;
+  transform-origin: bottom bottom;
+  animation: drift 3.2s linear infinite;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    border-radius: 50%;
+  }
+
+  &::before {
+    background: #eee;
+    animation: smoke 0.5s linear infinite;
+  }
+
+  &::after {
+    background: #eee;
+    animation: smoke 0.5s linear 0.7s infinite;
+  }
+}
+
+svg {
+  position: relative;
+  width: 150px;
+  padding: 0 0 150px;
+  z-index: 1;
+}
+
+@keyframes smoke {
+  from {
+    left: 65px;
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  to {
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tracks {
+  from {
+    border-color: rgba(114, 112, 112, 0.397);
+  }
+  to {
+    border-color: rgb(75, 74, 74);
+  }
 }
