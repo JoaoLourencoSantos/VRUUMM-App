@@ -18,7 +18,7 @@ export class LoginService {
   auth = async (email, senha) => {
     let result: any = { sucess: true, message: null };
 
-    await this.sendPost(email, senha)
+    await this.sendAuth(email, senha)
       .toPromise()
       .then((response) => {
 
@@ -53,7 +53,7 @@ export class LoginService {
     });
   }
 
-  sendPost(email, password): Observable<ResponseDTO> {
+  sendAuth(email, password): Observable<ResponseDTO> {
     return this.http.post<ResponseDTO>(
       `${this.API_BASEPATH}/usuarios/autenticacao`,
       {

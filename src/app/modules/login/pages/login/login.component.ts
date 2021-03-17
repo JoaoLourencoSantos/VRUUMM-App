@@ -90,6 +90,8 @@ export class LoginComponent implements OnInit {
         return;
       }
 
+      this.loginService.setSessao(result);
+
       this.toast.successAlert();
 
       this.router.navigate(['/', 'app']);
