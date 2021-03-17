@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FooterComponent } from '../components/footer/footer.component';
+import { AuthService } from '../services/auth.service';
 import { ToastService } from '../services/toast.service';
 import { HeaderComponent } from './../components/header/header.component';
 import { MaterialModule } from './material.module';
@@ -22,6 +23,6 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ToastService],
+  providers: [ToastService, AuthService],
 })
 export class SharedModule {}
