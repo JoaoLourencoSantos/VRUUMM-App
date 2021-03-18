@@ -18,7 +18,7 @@
 
 .loader {
   z-index: 1515;
-  background: rgba(0, 0, 0, 0.705);
+  background: rgba(0, 0, 0, 0.89);
   position: fixed;
   top: 0;
   right: 0;
@@ -111,9 +111,9 @@ svg {
 
 @keyframes tracks {
   from {
-    border-color: rgba(114, 112, 112, 0.397);
+    border-color: rgba(56, 56, 56, 0.397);
   }
   to {
-    border-color: rgb(75, 74, 74);
+    border-color: rgb(179, 178, 178);
   }
 }
