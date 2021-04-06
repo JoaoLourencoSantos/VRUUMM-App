@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { FooterComponent } from '../components/footer/footer.component';
 import { LoaderComponent } from '../components/loader/loader.component';
@@ -16,7 +17,7 @@ import { MaterialModule } from './material.module';
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,

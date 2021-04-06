@@ -29,6 +29,8 @@ main {
 /// LEFT BOX STYLE
 //////////////////////
 section.box-image {
+  pointer-events: none;
+
   div {
     width: 70%;
     height: 50%;
