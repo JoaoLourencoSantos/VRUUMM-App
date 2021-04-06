@@ -111,6 +111,11 @@ body {
 //////////////////////
 /// TOAST STYLE
 //////////////////////
+
+.toast-container .ngx-toastr {
+  box-shadow: 0 0 12px #040404bf !important;
+}
+
 .snack-success {
 	font-weight: 700;
 	color: white !important;
