@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ResponseDTO } from 'src/app/shared/models/dto/response.dto';
 import { UserDTO } from 'src/app/shared/models/dto/user.dto';
+import { UserTypeEnum } from 'src/app/shared/models/enum/user.type.enum';
 
 import { environment } from './../../../../environments/environment.prod';
 
@@ -21,7 +22,6 @@ export class LoginService {
     await this.sendAuth(email, senha)
       .toPromise()
       .then((response) => {
-
         if (!response.sucesso) {
           result.sucess = false;
           result.message = response.mensagem;
@@ -55,7 +55,7 @@ export class LoginService {
 
   sendAuth(email, password): Observable<ResponseDTO> {
     return this.http.post<ResponseDTO>(
-      `${this.API_BASEPATH}/usuarios/autenticacao`,
+      `${this.API_BASEPATH}/usuarios/autenticacao?tipo=${UserTypeEnum.LOCATARIO}`,
       {
         emailUsuario: email,
         senhaUsuario: password,

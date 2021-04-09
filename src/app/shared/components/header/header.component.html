@@ -10,13 +10,16 @@
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" (click)='this.toHome()'>Home</a>
+      <div *ngIf="this.isActive('home')" class="subline"></div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Carros</a>
+      <a class="nav-link" (click)='this.toCars()'>Carros</a>
+      <div *ngIf="this.isActive('cars')" class="subline"></div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Aluguéis</a>
+      <a class="nav-link" (click)='this.toRents()'>Aluguéis</a>
+      <div *ngIf="this.isActive('rents')" class="subline"></div>
     </li>
     <li class="nav-item pl-lg-5 li-button">
       <button (click)='logout()' class="btn btn-outline">Logout</button>

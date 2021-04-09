@@ -3,15 +3,11 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 
 import { MainRoutingModule } from './main-routing.module';
-import { MainComponent } from './pages/main/main.component';
-
+import { MainComponent } from './modules/pages/main/main.component';
 
 @NgModule({
   declarations: [MainComponent],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, MainRoutingModule, SharedModule],
+  bootstrap: [MainComponent],
 })
-export class MainModule { }
+export class MainModule {}
