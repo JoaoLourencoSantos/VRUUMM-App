@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { UserDTO } from 'src/app/shared/models/dto/user.dto';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
-import { UtilsService } from './../../../../shared/services/utils.service';
-import { LoginService } from './../../services/login.service';
+import { UtilsService } from '../../../shared/services/utils.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +12,7 @@ import { LoginService } from './../../services/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-  passwordHide : boolean = true;
+  passwordHide: boolean = true;
 
   email: string = '';
   pass: string = '';
@@ -32,7 +31,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   auth = async () => {
-
     if (!this.email || !this.pass) {
       this.toast.infoErroAlert();
       return;
@@ -95,5 +93,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/', 'app', 'home']);
     });
   };
-
 }
