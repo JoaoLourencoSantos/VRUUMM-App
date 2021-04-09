@@ -32,8 +32,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   auth = async () => {
-    console.log(this.email);
-    console.log(this.pass);
 
     if (!this.email || !this.pass) {
       this.toast.infoErroAlert();
@@ -52,7 +50,7 @@ export class LoginComponent implements OnInit {
 
     this.toast.successAlert();
 
-    this.router.navigate(['/', 'app']);
+    this.router.navigate(['/', 'app', 'home']);
   };
 
   register = async () => {
@@ -94,7 +92,7 @@ export class LoginComponent implements OnInit {
 
       this.toast.successAlert();
 
-      this.router.navigate(['/', 'app']);
+      this.router.navigate(['/', 'app', 'home']);
     });
   };
 
