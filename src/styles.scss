@@ -1,7 +1,7 @@
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import 'variables';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~bootstrap/scss/bootstrap.scss';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "variables";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~bootstrap/scss/bootstrap.scss";
 
 html,
 body {
@@ -17,26 +17,26 @@ body {
 //////////////////////
 
 ::-webkit-scrollbar {
-	width: 5px;
-	height: 10px;
-	-webkit-border-radius: 16px;
+  width: 5px;
+  height: 10px;
+  -webkit-border-radius: 16px;
 }
 
 ::-webkit-scrollbar-track-piece {
-	background-color: #c5cae9;
-	-webkit-border-radius: 3px;
+  background-color: #c5cae9;
+  -webkit-border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-	height: 5px;
-	background-color: #9e9e9e;
-	-webkit-border-radius: 3px;
+  height: 5px;
+  background-color: #9e9e9e;
+  -webkit-border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-	width: 5px;
-	background-color: #9e9e9e;
-	-webkit-border-radius: 3px;
+  width: 5px;
+  background-color: #9e9e9e;
+  -webkit-border-radius: 3px;
 }
 
 //////////////////////
@@ -83,7 +83,7 @@ body {
 //////////////////////
 /// FORM FIELD STYLE
 //////////////////////
-.input-icon{
+.input-icon {
   background-color: white !important;
   border-radius: 50px;
   width: 90%;
@@ -117,31 +117,30 @@ body {
 }
 
 .snack-success {
-	font-weight: 700;
-	color: white !important;
-	background-color: #0cb05b !important;
-	.mat-simple-snackbar-action {
-		color: white !important;
-	}
+  font-weight: 700;
+  color: white !important;
+  background-color: #0cb05b !important;
+  .mat-simple-snackbar-action {
+    color: white !important;
+  }
 }
 
 .snack-error {
-	font-weight: 700;
-	color: white !important;
-	background-color: #c20c36 !important;
-	.mat-simple-snackbar-action {
-		color: white !important;
-	}
+  font-weight: 700;
+  color: white !important;
+  background-color: #c20c36 !important;
+  .mat-simple-snackbar-action {
+    color: white !important;
+  }
 }
 
-
 .snack-warn {
-	font-weight: 700;
-	color: white !important;
-	background-color: #ea8d16 !important;
-	.mat-simple-snackbar-action {
-		color: white !important;
-	}
+  font-weight: 700;
+  color: white !important;
+  background-color: #ea8d16 !important;
+  .mat-simple-snackbar-action {
+    color: white !important;
+  }
 }
 
 //////////////////////
@@ -151,7 +150,7 @@ body {
   background-color: $primary;
   color: white;
   font-weight: 500;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 //////////////////////
@@ -164,4 +163,15 @@ body {
 
 .cdk-overlay-dark-backdrop {
   background: rgb(0 0 0 / 67%) !important;
+}
+
+//////////////////////
+/// TOGGLE STYLE
+//////////////////////
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: $primary;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $primary;
 }

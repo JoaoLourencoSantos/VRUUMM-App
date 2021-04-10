@@ -26,6 +26,7 @@
     "@angular/router": "~10.1.0",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
+    "ngx-currency": "^2.5.2",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

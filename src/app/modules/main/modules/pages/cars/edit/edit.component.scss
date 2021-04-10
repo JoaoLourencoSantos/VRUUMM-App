@@ -16,8 +16,6 @@ section {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 2%;
     color: $primary;
 
     div.header-title {
@@ -28,11 +26,11 @@ section {
 
     div.btn-close {
       width: 10%;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
 
       cursor: pointer;
 
-      font-weight: 700;
+      font-weight: 600;
       color: $primary;
       width: 30px;
       height: 30px;
@@ -46,12 +44,20 @@ section {
   }
 
   div.body {
-    margin-top: 5%;
+    margin-top: 2%;
     width: 100%;
     height: auto;
 
     display: flex;
     flex-direction: column;
+
+    .toggle-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: 2%;
+    }
 
     .main-box {
       width: 100%;
@@ -105,11 +111,15 @@ section {
     text-align: center;
     justify-content: flex-end;
 
+    font-weight: 500;
+
     span {
       border-radius: 20px;
       padding: 0.5% 2%;
 
       width: 20%;
+
+      cursor: pointer;
 
       &:active {
         border: none !important;
@@ -118,6 +128,7 @@ section {
       &.cancel {
         color: $primary;
         border: 2px solid $primary;
+        margin-left: 3%;
 
         &:hover {
           color: white;
@@ -128,7 +139,6 @@ section {
       &.confirm {
         color: #4caf50;
         border: 2px solid #4caf50;
-        margin-left: 3%;
 
         &:hover {
           color: white;
@@ -137,4 +147,8 @@ section {
       }
     }
   }
+}
+
+.input-required {
+  color: $primary;
 }
