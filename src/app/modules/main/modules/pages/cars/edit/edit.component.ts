@@ -11,15 +11,17 @@ import { ToastService } from './../../../../../../shared/services/toast.service'
 })
 export class EditCarComponent implements OnInit {
   public carEntity: CarDTO = new CarDTO();
-
-  modelo: string;
+  public isUpdate: boolean = false;
 
   constructor(
     private toast: ToastService,
     public dialogRef: MatDialogRef<EditCarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CarDTO
   ) {
-    this.carEntity = data;
+    if (data) {
+      this.carEntity = data;
+      this.isUpdate = true;
+    }
   }
 
   ngOnInit(): void {}

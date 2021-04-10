@@ -86,15 +86,13 @@ section.box-list {
   flex-wrap: wrap;
 
   mat-card.list-item {
-
     margin-right: 1.3%;
 
     div.box-img {
-
       cursor: pointer;
 
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
       }
 
       border-radius: 15px;
@@ -107,7 +105,7 @@ section.box-list {
       }
     }
 
-    &:nth-last-child(2) {
+    &:nth-child(4n-4) {
       margin-right: 0px !important;
     }
 
@@ -134,4 +132,15 @@ section.box-list {
       }
     }
   }
+}
+
+.float-add-button {
+  background: $primary;
+  font-size: 2rem;
+  font-weight: 600;
+
+  right: 50px;
+  bottom: 50px;
+  left: auto;
+  position: fixed;
 }

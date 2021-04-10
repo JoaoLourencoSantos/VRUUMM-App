@@ -23,6 +23,8 @@ export class ListCarComponent implements OnInit {
       'Volkswagen',
       'https://cdn-motorshow-ssl.akamaized.net/wp-content/uploads/sites/2/2019/11/novo-onix-premier-20.jpg'
     ),
+    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen'),
+    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen'),
   ];
 
   constructor(public dialog: MatDialog) {}
@@ -31,6 +33,10 @@ export class ListCarComponent implements OnInit {
 
   public getImage(image: string): string {
     return image || '../../../../../../../assets/images/default-car.png';
+  }
+
+  public createCar(): void {
+    this.dialog.open(EditCarComponent);
   }
 
   public editCar(car:CarDTO): void {

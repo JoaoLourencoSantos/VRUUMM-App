@@ -14,7 +14,7 @@
 
   </mat-card>
 
-  <section  class="box-list">
+  <section class="box-list">
     <mat-card class="list-item" *ngFor="let car of this.cars">
       <div class="box-img">
         <img mat-card-image [src]="this.getImage(car.imagem)" alt="Photo of a Shiba Inu">
@@ -24,9 +24,13 @@
         <mat-card-subtitle>{{car.marca}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <mat-icon (click)="this.editCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para editar" matTooltipClass="tooltip-red">edit</mat-icon>
-        <mat-icon (click)="this.deleteCar(car)"  matTooltipPosition="above" matTooltip="Clique aqui para deletar" matTooltipClass="tooltip-red">delete</mat-icon>
+        <mat-icon (click)="this.editCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para editar"
+          matTooltipClass="tooltip-red">edit</mat-icon>
+        <mat-icon (click)="this.deleteCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para deletar"
+          matTooltipClass="tooltip-red">delete</mat-icon>
       </mat-card-actions>
     </mat-card>
   </section>
 </section>
+
+<button (click)="this.createCar()" class='float-add-button' mat-fab color="accent">+</button>
