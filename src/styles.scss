@@ -144,11 +144,24 @@ body {
 	}
 }
 
-
-
+//////////////////////
+/// TOOLTIP STYLE
+//////////////////////
 .tooltip-red {
   background-color: $primary;
   color: white;
   font-weight: 500;
   font-size: .7rem;
+}
+
+//////////////////////
+/// MODAL STYLE
+//////////////////////
+.mat-dialog-container {
+  padding: 20px 25px 15px 25px !important;
+  border-radius: 25px !important;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgb(0 0 0 / 67%) !important;
 }

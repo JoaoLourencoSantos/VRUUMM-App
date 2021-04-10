@@ -1,1 +1,65 @@
-<p>edit works!</p>
+<section>
+  <div class="header">
+    <div class="header-title">Cadastrar / Editar</div>
+    <div class="btn-close" mat-dialog-close>X</div>
+  </div>
+  <div class="body">
+    <div class="main-box">
+      <section class="side-avatar">
+        <img [src]="this.getImage()">
+      </section>
+      <section class="side-form">
+        <div class="box-line">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+        </div>
+
+        <div class="box-line">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+        </div>
+
+        <div class="box-line">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-box">
+      <mat-form-field appearance="outline">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div class="actions">
+    <span class="cancel" mat-button mat-dialog-close>Cancelar</span>
+    <span class="confirm" mat-button mat-dialog-close>Confirmar</span>
+  </div>
+</section>

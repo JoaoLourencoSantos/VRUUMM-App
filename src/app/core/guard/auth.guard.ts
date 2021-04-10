@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
 
     if (isLogin && this.auth.isAuthenticated() ){
       console.log("AQUI2");
-      this.router.navigate(['/', 'app']);
+      this.router.navigate(['/', 'app', 'home']);
       return true;
     }
 
