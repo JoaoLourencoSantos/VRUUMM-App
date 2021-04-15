@@ -13,10 +13,16 @@ export class CarDTO {
 
   public imagem?: string;
 
-  constructor(modelo?: string, marca?: string, imagem?: string) {
+  constructor(
+    modelo?: string,
+    marca?: string,
+    imagem?: string,
+    disponibilidade?: boolean
+  ) {
     this.modelo = modelo;
     this.marca = marca;
     this.imagem = imagem;
+    this.disponibilidade = disponibilidade;
   }
 
   isValid() {

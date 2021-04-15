@@ -24,27 +24,24 @@ section {
       font-weight: 500;
     }
 
-    div.btn-close {
+    .btn-close {
       width: 10%;
-      font-size: 1.2rem;
+      font-size: 2rem;
 
-      cursor: pointer;
-
-      font-weight: 600;
-      color: $primary;
-      width: 30px;
-      height: 30px;
-      border: 2px solid $primary;
-      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      justify-content: flex-end;
+
+      color: #777777;
+
+      &:hover {
+        color: $primary;
+      }
     }
   }
 
   div.body {
-    margin-top: .5%;
+    margin-top: 0.5%;
     width: 100%;
     height: auto;
 

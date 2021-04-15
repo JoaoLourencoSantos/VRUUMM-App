@@ -91,10 +91,6 @@ section.box-list {
     div.box-img {
       cursor: pointer;
 
-      &:hover {
-        opacity: 0.8;
-      }
-
       border-radius: 15px;
       width: 100%;
       padding: 2% 2% 0% 2%;
@@ -143,4 +139,31 @@ section.box-list {
   bottom: 50px;
   left: auto;
   position: fixed;
+}
+
+.flag-car {
+  position: absolute;
+  top: 24px;
+  padding: 7px 7px 7px 14px;
+  border-radius: 13px 0px 0px 13px;
+  float: right;
+  right: 6px;
+  color: white;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    margin-left: 6px;
+  }
+}
+
+.flag-car-avaliable {
+  background: green;
+}
+
+.flag-car-unavaliable {
+  background: $primary;
 }

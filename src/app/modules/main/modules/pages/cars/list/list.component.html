@@ -16,6 +16,12 @@
 
   <section class="box-list">
     <mat-card class="list-item" *ngFor="let car of this.cars">
+
+      <div class=" flag-car {{ car.disponibilidade ? 'flag-car-avaliable': 'flag-car-unavaliable'}}">
+        <mat-icon> {{ car.disponibilidade ? 'check_circle': 'do_disturb_on'}} </mat-icon>
+        <span>{{ car.disponibilidade ? 'Disponível': ''}}</span>
+      </div>
+
       <div class="box-img">
         <img mat-card-image [src]="this.getImage(car.imagem)" alt="Photo of a Shiba Inu">
       </div>
