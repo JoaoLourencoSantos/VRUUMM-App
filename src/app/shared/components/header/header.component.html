@@ -21,6 +21,10 @@
       <a class="nav-link" (click)='this.toRents()'>Aluguéis</a>
       <div *ngIf="this.isActive('rents')" class="subline"></div>
     </li> -->
+    <li class="nav-item">
+      <a class="nav-link" (click)='this.toProfile()'>Perfil</a>
+      <div *ngIf="this.isActive('profile')" class="subline"></div>
+    </li>
     <li class="nav-item pl-lg-5 li-button">
       <button (click)='logout()' class="btn btn-outline">Logout</button>
     </li>

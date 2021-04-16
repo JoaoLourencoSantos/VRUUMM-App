@@ -54,4 +54,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/app/rents']);
     this.page = 'rents';
   }
+
+  toProfile(): void {
+    this.router.navigate(['/app/profile']);
+    this.page = 'profile';
+  }
 }

@@ -11,6 +11,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 
 const material = [
   MatFormFieldModule,
@@ -23,7 +24,8 @@ const material = [
   MatTooltipModule,
   MatDialogModule,
   MatSlideToggleModule,
-  MatButtonModule
+  MatButtonModule,
+  MatDividerModule
 ];
 
 @NgModule({

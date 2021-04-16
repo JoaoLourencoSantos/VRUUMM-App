@@ -59,6 +59,7 @@ export class LoginService {
       {
         emailUsuario: email,
         senhaUsuario: password,
+        perfilUsuario: UserTypeEnum.LOCATARIO,
       },
       { headers: { 'Content-Type': 'application/json' } }
     );
