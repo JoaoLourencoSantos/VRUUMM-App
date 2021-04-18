@@ -14,7 +14,7 @@
 
   </mat-card>
 
-  <section class="box-list">
+  <section class="box-list" *ngIf="!this.isEmpty">
     <mat-card class="list-item" *ngFor="let car of this.cars">
 
       <div class=" flag-car {{ car.disponibilidade ? 'flag-car-avaliable': 'flag-car-unavaliable'}}">
@@ -37,6 +37,11 @@
       </mat-card-actions>
     </mat-card>
   </section>
+
+  <article class="box-empty"  *ngIf="this.isEmpty">
+    <img src="../../../../../../../assets/images/empty.svg" alt="">
+    <div> Não há dados...</div>
+  </article>
 </section>
 
 <button (click)="this.createCar()" class='float-add-button' mat-fab color="accent">+</button>

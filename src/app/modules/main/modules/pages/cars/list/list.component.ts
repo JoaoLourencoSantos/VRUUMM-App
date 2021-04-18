@@ -36,6 +36,10 @@ export class ListCarComponent implements OnInit {
     });
   }
 
+  public get isEmpty() {
+    return this.cars.length === 0;
+  }
+
   public getImage(image: string): string {
     return image || '../../../../../../../assets/images/default-car.png';
   }

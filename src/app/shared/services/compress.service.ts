@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
 
@@ -7,25 +8,22 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 export class CompressService {
   constructor(private imageCompress: NgxImageCompressService) {}
 
-  imgResultBeforeCompress: string;
-  imgResultAfterCompress: string;
+  public compressFile(): Observable<string> {
+    return new Observable<string>((observer) => {
+      this.imageCompress.uploadFile().then(({ image, orientation }) => {
+        console.warn('Size in bytes was:', this.imageCompress.byteCount(image));
 
+        this.imageCompress
+          .compressFile(image, orientation, 65, 30)
+          .then((result) => {
+            console.warn(
+              'Size in bytes is now:',
+              this.imageCompress.byteCount(result)
+            );
 
-  public compressFile() {
-    this.imageCompress.uploadFile().then(({ image, orientation }) => {
-      this.imgResultBeforeCompress = image;
-      console.warn('Size in bytes was:', this.imageCompress.byteCount(image));
-
-      this.imageCompress
-        .compressFile(image, orientation, 75, 50)
-        .then((result) => {
-          console.log(result);
-          this.imgResultAfterCompress = result;
-          console.warn(
-            'Size in bytes is now:',
-            this.imageCompress.byteCount(result)
-          );
-        });
+            observer.next(result);
+          });
+      });
     });
   }
 }

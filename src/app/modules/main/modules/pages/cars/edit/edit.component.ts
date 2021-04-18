@@ -21,7 +21,9 @@ export class EditCarComponent implements OnInit {
     private service: CarService,
     public dialogRef: MatDialogRef<EditCarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CarDTO,
-    private imageCompress: NgxImageCompressService
+    private imageCompress: NgxImageCompressService,
+
+    private compressService: CompressService
   ) {
     if (data) {
       this.carEntity = data;
@@ -90,19 +92,12 @@ export class EditCarComponent implements OnInit {
   }
 
   public compressFile() {
-    this.imageCompress.uploadFile().then(({ image, orientation }) => {
-      console.warn('Size in bytes was:', this.imageCompress.byteCount(image));
+    this.compressService.compressFile().subscribe((result) => {
 
-      this.imageCompress
-        .compressFile(image, orientation, 75, 50)
-        .then((result) => {
-          console.log(result);
-          this.carEntity.imagem = result;
-          console.warn(
-            'Size in bytes is now:',
-            this.imageCompress.byteCount(result)
-          );
-        });
+      if (result) {
+        this.carEntity.imagem = result;
+      }
+
     });
   }
 }

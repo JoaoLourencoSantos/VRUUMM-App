@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+mat-progress-bar {
+  position: absolute;
+  z-index: 151515;
+}
+
 .icon-credit {
   position: fixed;
   bottom: 5px;

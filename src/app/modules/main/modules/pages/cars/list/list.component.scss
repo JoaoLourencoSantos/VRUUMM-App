@@ -130,6 +130,26 @@ section.box-list {
   }
 }
 
+article.box-empty {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 80%;
+  height: 85%;
+
+  div {
+    margin-left: 3%;
+    margin-top: 10%;
+    font-size: 2rem;
+  }
+
+  img {
+    width: 25%;
+  }
+}
+
 .float-add-button {
   background: $primary;
   font-size: 2rem;
@@ -146,7 +166,7 @@ section.box-list {
   top: 24px;
   padding: 7px 7px 7px 14px;
   border-radius: 13px 0px 0px 13px;
-  border-right: .2px solid rgba(0, 0, 0, 0.178);
+  border-right: 0.2px solid rgba(0, 0, 0, 0.178);
   float: right;
   right: 0px;
   color: white;
