@@ -28,7 +28,7 @@ export class ListCarComponent implements OnInit {
     this.populate();
   }
 
-  private populate() {
+  public populate() {
     this.service.find(this.searchKey).subscribe((result) => {
       if (!result) return;
 

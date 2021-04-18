@@ -5,7 +5,7 @@
 
       <div class="input-search">
         <input name="email" [(ngModel)]="this.searchKey" matInput placeholder="Digite a sua pesquisa...">
-        <div matTooltipPosition="right" matTooltip="Clique aqui para consultar" matTooltipClass="tooltip-red">
+        <div matTooltipPosition="right" matTooltip="Clique aqui para consultar" matTooltipClass="tooltip-red" (click)="this.populate()">
           <mat-icon matSuffix>search</mat-icon>
         </div>
       </div>

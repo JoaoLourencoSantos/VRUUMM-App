@@ -17,13 +17,16 @@ export class CarService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   find(key: string): Observable<CarDTO[]> {
+    let query = `codigoUsuarioDonoDoCarro=${this.auth.session}`;
+
+    if (key) {
+      query += `&termo=${key}`;
+    }
+
     return this.http
-      .get<ResponseDTO>(
-        `${this.API_BASEPATH}/carros?/buscagenerica?termo=${key}&&codigoUsuarioDonoDoCarro=${this.auth.session}`,
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
+      .get<ResponseDTO>(`${this.API_BASEPATH}/carros/buscaGenerica?${query}`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
       .pipe(map((result: ResponseDTO) => result.corpo));
   }
 

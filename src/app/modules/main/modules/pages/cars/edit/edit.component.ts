@@ -21,12 +21,10 @@ export class EditCarComponent implements OnInit {
     private service: CarService,
     public dialogRef: MatDialogRef<EditCarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CarDTO,
-    private imageCompress: NgxImageCompressService,
-
     private compressService: CompressService
   ) {
     if (data) {
-      this.carEntity = data;
+      this.carEntity = { ...data };
       this.isUpdate = true;
     }
   }
@@ -93,11 +91,9 @@ export class EditCarComponent implements OnInit {
 
   public compressFile() {
     this.compressService.compressFile().subscribe((result) => {
-
       if (result) {
         this.carEntity.imagem = result;
       }
-
     });
   }
 }
