@@ -1,3 +1,6 @@
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { CompressService } from './../../../../../../shared/services/compress.service';
+import { CarService } from './../../../services/car.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CarDTO } from 'src/app/shared/models/dto/cart.dto';
@@ -15,8 +18,10 @@ export class EditCarComponent implements OnInit {
 
   constructor(
     private toast: ToastService,
+    private service: CarService,
     public dialogRef: MatDialogRef<EditCarComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CarDTO
+    @Inject(MAT_DIALOG_DATA) public data: CarDTO,
+    private imageCompress: NgxImageCompressService
   ) {
     if (data) {
       this.carEntity = data;
@@ -29,20 +34,51 @@ export class EditCarComponent implements OnInit {
   public save(): void {
     console.log(this.carEntity);
 
-    if (!this.carEntity.isValid()) {
+    if (!CarDTO.isValid(this.carEntity)) {
       this.toast.baseWarnAlertWithMessage('Preencha os campos obrigatórios!!');
 
       return;
     }
 
-    if (!this.carEntity.isNumberSeatsValid()) {
+    if (!CarDTO.isNumberSeatsValid(this.carEntity)) {
       this.toast.baseWarnAlertWithMessage(
         'A quantidade de assentos deve ser menor que 12!'
       );
       return;
     }
 
-    this.dialogRef.close();
+    if (this.isUpdate) {
+      this.update();
+      return;
+    }
+
+    this.create();
+  }
+
+  create() {
+    this.service.create(this.carEntity).subscribe((result) => {
+      if (!result) return;
+
+      if (result.sucesso) {
+        this.toast.successAlert();
+        this.dialogRef.close({ reload: true });
+      } else {
+        this.toast.baseWarnAlertWithMessage(result.mensagem);
+      }
+    });
+  }
+
+  update() {
+    this.service.update(this.carEntity).subscribe((result) => {
+      if (!result) return;
+
+      if (result.sucesso) {
+        this.toast.successAlert();
+        this.dialogRef.close({ reload: true });
+      } else {
+        this.toast.baseWarnAlertWithMessage(result.mensagem);
+      }
+    });
   }
 
   public getImage(image?: string): string {
@@ -51,5 +87,22 @@ export class EditCarComponent implements OnInit {
 
   public changeAvailability(event: any): void {
     console.log(event);
+  }
+
+  public compressFile() {
+    this.imageCompress.uploadFile().then(({ image, orientation }) => {
+      console.warn('Size in bytes was:', this.imageCompress.byteCount(image));
+
+      this.imageCompress
+        .compressFile(image, orientation, 75, 50)
+        .then((result) => {
+          console.log(result);
+          this.carEntity.imagem = result;
+          console.warn(
+            'Size in bytes is now:',
+            this.imageCompress.byteCount(result)
+          );
+        });
+    });
   }
 }

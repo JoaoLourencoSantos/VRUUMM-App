@@ -1,7 +1,11 @@
+import { ToastService } from 'src/app/shared/services/toast.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { CarService } from '../../../services/car.service';
 import { CarDTO } from 'src/app/shared/models/dto/cart.dto';
 import { EditCarComponent } from './../edit/edit.component';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LoginService } from 'src/app/modules/login/services/login.service';
 
 @Component({
   selector: 'app-list',
@@ -9,46 +13,66 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./list.component.scss'],
 })
 export class ListCarComponent implements OnInit {
-  cars: CarDTO[] = [
-    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen', null, false),
-    new CarDTO(
-      'Gol 1.0 MPI (Flex)',
-      'Volkswagen',
-      'https://cdn-motorshow-ssl.akamaized.net/wp-content/uploads/sites/2/2019/11/novo-onix-premier-20.jpg',
-      true
-    ),
-    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen', null, true),
-    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen', null, false),
-    new CarDTO(
-      'Gol 1.0 MPI (Flex)',
-      'Volkswagen',
-      'https://cdn-motorshow-ssl.akamaized.net/wp-content/uploads/sites/2/2019/11/novo-onix-premier-20.jpg',
-      true
-    ),
-    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen', null, true),
-    new CarDTO('Gol 1.0 MPI (Flex)', 'Volkswagen', null, false),
-  ];
+  cars: CarDTO[] = [];
+  public searchKey: string = null;
 
-  constructor(public dialog: MatDialog) {}
+  private dialogRef: MatDialogRef<EditCarComponent>;
 
-  ngOnInit(): void {}
+  constructor(
+    public dialog: MatDialog,
+    private service: CarService,
+    private toast: ToastService
+  ) {}
+
+  ngOnInit(): void {
+    this.populate();
+  }
+
+  private populate() {
+    this.service.find(this.searchKey).subscribe((result) => {
+      if (!result) return;
+
+      this.cars = result;
+    });
+  }
 
   public getImage(image: string): string {
     return image || '../../../../../../../assets/images/default-car.png';
   }
 
   public createCar(): void {
-    this.dialog.open(EditCarComponent);
+    this.dialogRef = this.dialog.open(EditCarComponent);
+
+    this.onClose();
   }
 
   public editCar(car: CarDTO): void {
-    console.log(car);
-    this.dialog.open(EditCarComponent, {
+    this.dialogRef = this.dialog.open(EditCarComponent, {
       data: car,
+    });
+
+    this.onClose();
+  }
+
+  onClose() {
+    this.dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.reload) {
+        this.populate();
+      }
     });
   }
 
   public deleteCar(car: CarDTO): void {
-    console.log(car);
+    this.service.delete(car.codigo).subscribe((result) => {
+      if (!result) return;
+
+      if (result.sucesso) {
+        this.toast.successAlert();
+        this.populate();
+        return;
+      }
+
+      this.toast.baseWarnAlertWithMessage(result.mensagem);
+    });
   }
 }

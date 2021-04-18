@@ -28,7 +28,7 @@ export class LoginService {
           return result;
         }
 
-        this.setSessao(response.corpo);
+        this.setSession(response.corpo.codigo);
       })
       .catch(({ error }) => {
         console.log(error);
@@ -55,17 +55,17 @@ export class LoginService {
 
   sendAuth(email, password): Observable<ResponseDTO> {
     return this.http.post<ResponseDTO>(
-      `${this.API_BASEPATH}/usuarios/autenticacao?tipo=${UserTypeEnum.LOCATARIO}`,
+      `${this.API_BASEPATH}/usuarios/autenticacao?tipo=${UserTypeEnum.LOCADOR}`,
       {
         emailUsuario: email,
         senhaUsuario: password,
-        perfilUsuario: UserTypeEnum.LOCATARIO,
+        perfilUsuario: UserTypeEnum.LOCADOR,
       },
       { headers: { 'Content-Type': 'application/json' } }
     );
   }
 
-  setSessao(identificador: any): void {
+  setSession(identificador: any): void {
     localStorage.setItem('user-logged', JSON.stringify(identificador));
   }
 }

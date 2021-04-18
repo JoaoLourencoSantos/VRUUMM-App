@@ -7,7 +7,7 @@ export class UserDTO {
   cpfUsuario: string;
   numeroTelefoneUsuario: string;
 
-  perfilUsuario: UserTypeEnum = UserTypeEnum.LOCATARIO;
+  perfilUsuario: UserTypeEnum = UserTypeEnum.LOCADOR;
 
   public isValid(): boolean {
     return this.emailUsuario && this.nomeUsuario && this.senhaUsuario

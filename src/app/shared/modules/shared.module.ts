@@ -11,14 +11,10 @@ import { ToastService } from '../services/toast.service';
 import { HeaderComponent } from './../components/header/header.component';
 import { MaterialModule } from './material.module';
 
+import { NgxImageCompressService } from 'ngx-image-compress';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LoaderComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
   exports: [
     HeaderComponent,
     FooterComponent,
@@ -27,6 +23,11 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ToastService, AuthService, LoaderService],
+  providers: [
+    ToastService,
+    AuthService,
+    LoaderService,
+    NgxImageCompressService,
+  ],
 })
 export class SharedModule {}

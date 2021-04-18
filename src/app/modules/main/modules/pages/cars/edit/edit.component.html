@@ -1,7 +1,7 @@
 <section>
   <div class="header">
     <div class="header-title">{{this.isUpdate? 'Editar': 'Cadastar'}}</div>
-    <mat-icon class="btn-close" mat-dialog-close >highlight_off</mat-icon>
+    <mat-icon class="btn-close" mat-dialog-close>highlight_off</mat-icon>
   </div>
   <div class="body">
     <div class="toggle-box">
@@ -10,7 +10,9 @@
     </div>
     <div class="main-box">
       <section class="side-avatar">
-        <img [src]="this.getImage()">
+
+        <img [src]="this.getImage(carEntity.imagem)" (click)="this.compressFile()">
+
       </section>
       <section class="side-form">
         <div class="box-line">

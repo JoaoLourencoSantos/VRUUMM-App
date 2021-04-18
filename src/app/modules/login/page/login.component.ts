@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         return;
       }
 
-      this.loginService.setSessao(result);
+      this.loginService.setSession(result.corpo.codigoUsuarioCadastrado);
 
       this.toast.successAlert();
 

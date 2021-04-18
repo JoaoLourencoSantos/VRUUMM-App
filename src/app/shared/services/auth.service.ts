@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor() {}
 
-  public isAuthenticated(): boolean {
+  public get isAuthenticated(): boolean {
     return this.session ? true : false;
   }
 
@@ -14,12 +14,12 @@ export class AuthService {
     this.removeSession();
   }
 
-  private get session(): any {
+  public get session(): number {
     const value = localStorage.getItem('user-logged');
 
     console.log(value);
 
-    return value;
+    return parseInt(value);
   }
 
   private removeSession(): void {

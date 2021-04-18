@@ -175,3 +175,14 @@ body {
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: $primary;
 }
+
+
+
+.mat-progress-bar-fill::after {
+  background-color: $primary;
+}
+
+.mat-progress-bar-buffer {
+  background-color: #f0f0f0;
+}
+

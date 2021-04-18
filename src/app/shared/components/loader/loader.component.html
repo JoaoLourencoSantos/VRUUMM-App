@@ -1,4 +1,8 @@
-<div class="loader" *ngIf="this.loaderService.isLoading | async">
+<mat-progress-bar mode="indeterminate"
+  *ngIf="(this.loaderService.isLoading | async) && (this.authService.isAuthenticated)"></mat-progress-bar>
+
+
+<div class="loader" *ngIf="(this.loaderService.isLoading | async) && !(this.authService.isAuthenticated) ">
   <div class="car">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px"
       y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">

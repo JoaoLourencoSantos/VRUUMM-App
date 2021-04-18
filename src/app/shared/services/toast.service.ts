@@ -8,9 +8,6 @@ export class ToastService {
   constructor(private _toast: ToastrService) {}
 
   errorAlert() {
-    this.openSnackBar('Opss... erro ao executar esta ação!', 'snack-error');
-
-
     this.show(
       `Erro ao executar esta ação!`,
       'WARNING',
@@ -51,8 +48,6 @@ export class ToastService {
   }
 
   successAlert() {
-    this.openSnackBar('A operação foi executada com sucesso!', 'snack-success');
-
     this.show(
       'A operação foi concluida!',
       'SUCCESS',
@@ -74,14 +69,5 @@ export class ToastService {
     }
 
     this._toast.error(message, title);
-  }
-
-  openSnackBar(message: string, style: string) {
-    // this._toast.open(message, '', {
-    //   duration: 3000,
-    //   horizontalPosition: 'end',
-    //   verticalPosition: 'top',
-    //   panelClass: style,
-    // });
   }
 }

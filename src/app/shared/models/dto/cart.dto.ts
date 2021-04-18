@@ -1,5 +1,5 @@
 export class CarDTO {
-  public id?: number | string;
+  public codigo?: number | string;
   public placa?: string;
   public modelo?: string;
   public marca?: string;
@@ -13,6 +13,8 @@ export class CarDTO {
 
   public imagem?: string;
 
+  public codigoUsuarioDonoDoCarro: number;
+
   constructor(
     modelo?: string,
     marca?: string,
@@ -25,17 +27,17 @@ export class CarDTO {
     this.disponibilidade = disponibilidade;
   }
 
-  isValid() {
+  public static isValid(car: CarDTO) {
     return (
-      this.modelo &&
-      this.marca &&
-      this.placa &&
-      this.numeroDeAssentos &&
-      this.precoDaDiaria
+      car.modelo &&
+      car.marca &&
+      car.placa &&
+      car.numeroDeAssentos &&
+      car.precoDaDiaria
     );
   }
 
-  isNumberSeatsValid() {
-    return this.numeroDeAssentos < 12;
+  public static isNumberSeatsValid(car: CarDTO) {
+    return car.numeroDeAssentos < 12;
   }
 }
