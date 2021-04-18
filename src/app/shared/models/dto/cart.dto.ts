@@ -3,13 +3,13 @@ export class CarDTO {
   public placa?: string;
   public modelo?: string;
   public marca?: string;
-  public cor?: string;
+  public cor: string ;
   public numeroDeAssentos?: number;
   public precoDaDiaria?: number | string;
 
-  public disponibilidade?: boolean;
+  public disponibilidade?: boolean = null;
 
-  public descricao?: string;
+  public descricao?: string = null;
 
   public imagem?: string;
 
