@@ -32,8 +32,6 @@ export class EditCarComponent implements OnInit {
   ngOnInit(): void {}
 
   public save(): void {
-    console.log(this.carEntity);
-
     if (!CarDTO.isValid(this.carEntity)) {
       this.toast.baseWarnAlertWithMessage('Preencha os campos obrigatórios!!');
 

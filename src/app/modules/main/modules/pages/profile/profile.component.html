@@ -30,28 +30,49 @@
       </div>
 
 
-      <div class="lines">
+      <div class="divider"></div>
+
+      <div class="lines tre-col">
+
+
+
+        <div class="input-search">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Digite seu cep ... <span class="input-required">*</span></mat-label>
+            <input name="cep" matInput [(ngModel)]="this.address.cep">
+          </mat-form-field>
+
+          <mat-icon matSuffix (click)="this.findAddress()">search</mat-icon>
+        </div>
+
         <mat-form-field appearance="outline">
-          <mat-label>Digite seu cep ... <span class="input-required">*</span></mat-label>
-          <input name="modelo" matInput>
+          <mat-label>Número<span class="input-required">*</span></mat-label>
+          <input name="numero" matInput [(ngModel)]="this.address.numero">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Marca <span class="input-required">*</span> </mat-label>
-          <input name="marca" matInput>
+          <mat-label>UF<span class="input-required">*</span></mat-label>
+          <input name="uf" matInput [(ngModel)]="this.address.uf" readonly>
         </mat-form-field>
+
       </div>
 
       <div class="lines">
         <mat-form-field appearance="outline">
-          <mat-label>Modelo <span class="input-required">*</span></mat-label>
-          <input name="modelo" matInput>
+          <mat-label>Endereço<span class="input-required">*</span></mat-label>
+          <input name="logradouro" matInput [(ngModel)]="this.address.logradouro" readonly>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Marca <span class="input-required">*</span> </mat-label>
-          <input name="marca" matInput>
+          <mat-label>Complemento </mat-label>
+          <input name="complemento" matInput [(ngModel)]="this.address.complemento">
         </mat-form-field>
+      </div>
+
+
+      <div class="actions">
+        <span class="confirm" mat-button >ATUALIZAR</span>
       </div>
 
     </form>

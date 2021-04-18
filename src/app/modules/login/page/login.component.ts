@@ -52,8 +52,6 @@ export class LoginComponent implements OnInit {
   };
 
   register = async () => {
-    console.log(this.newUser);
-
     if (!this.newUser.isValid()) {
       this.toast.infoErroAlert();
       return;
@@ -80,7 +78,6 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginService.create(this.newUser).subscribe((result) => {
-      console.log(result);
       if (result && !result.sucesso) {
         this.toast.errorAuth(result.mensagem);
         return;

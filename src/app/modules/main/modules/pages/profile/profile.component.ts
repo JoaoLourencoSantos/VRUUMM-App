@@ -1,15 +1,26 @@
+import { AddressDTO } from './../../../../../shared/models/dto/address.dto';
 import { Component, OnInit } from '@angular/core';
+import { AddressService } from 'src/app/shared/services/address.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  public address: AddressDTO = new AddressDTO();
 
-  constructor() { }
+  constructor(private addressService: AddressService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  public findAddress(): void {
+    this.addressService.find(this.address.cep).subscribe((result) => {
+      if (result) {
+        console.log(result);
+
+        this.address = { ...result };
+      }
+    });
   }
-
 }

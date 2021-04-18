@@ -17,14 +17,10 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    console.log('AQUI');
 
     const isLogin = route.data.isLogin;
 
-    console.log(isLogin);
-
     if (isLogin && this.auth.isAuthenticated) {
-      console.log('AQUI2');
       this.router.navigate(['/', 'app', 'home']);
       return true;
     }
