@@ -7,25 +7,13 @@ export class CarDTO {
   public numeroDeAssentos?: number;
   public precoDaDiaria?: number | string;
 
-  public disponibilidade?: boolean = null;
+  public disponibilidade?: boolean = true;
 
   public descricao?: string = null;
 
   public imagem?: string;
 
   public codigoUsuarioDonoDoCarro: number;
-
-  constructor(
-    modelo?: string,
-    marca?: string,
-    imagem?: string,
-    disponibilidade?: boolean
-  ) {
-    this.modelo = modelo;
-    this.marca = marca;
-    this.imagem = imagem;
-    this.disponibilidade = disponibilidade;
-  }
 
   public static isValid(car: CarDTO) {
     return (

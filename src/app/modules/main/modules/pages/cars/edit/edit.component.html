@@ -9,9 +9,14 @@
         {{carEntity.disponibilidade? 'Disponível': 'Indisponível'}} </mat-slide-toggle>
     </div>
     <div class="main-box">
-      <section class="side-avatar">
+      <section class="side-avatar" (click)="this.compressFile()">
 
-        <img [src]="this.getImage(carEntity.imagem)" (click)="this.compressFile()">
+        <div class="upload" *ngIf="!carEntity.imagem">
+          <mat-icon>cloud_upload</mat-icon>
+          <span>upload</span>
+        </div>
+
+        <img [src]="this.getImage(carEntity.imagem)">
 
       </section>
       <section class="side-form">

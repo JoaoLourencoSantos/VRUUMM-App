@@ -73,13 +73,45 @@ section {
     }
 
     section.side-avatar {
-      width: 30%;
+      width: 35%;
       height: auto;
 
       cursor: pointer !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        div.upload {
+          transition: 0.3s;
+          background: #000000a3;
+        }
+      }
+
+      div.upload {
+        background: red;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        position: absolute;
+        background: #00000045;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.5rem ;
+
+        mat-icon {
+          font-size: 2rem !important;
+          margin-bottom: 5%;
+        }
+      }
 
       img {
-
         cursor: pointer !important;
         width: 200px;
         height: 200px;
@@ -88,7 +120,7 @@ section {
     }
 
     section.side-form {
-      width: 70%;
+      width: 65%;
       height: auto;
 
       .box-line {
