@@ -16,6 +16,8 @@ export class EditCarComponent implements OnInit {
   public carEntity: CarDTO = new CarDTO();
   public isUpdate: boolean = false;
 
+  public showImage: boolean = true;
+
   constructor(
     private toast: ToastService,
     private service: CarService,
@@ -26,6 +28,8 @@ export class EditCarComponent implements OnInit {
     if (data) {
       this.carEntity = { ...data };
       this.isUpdate = true;
+
+      this.showImage = this.carEntity.imagem ? true : false;
     }
   }
 
@@ -93,5 +97,9 @@ export class EditCarComponent implements OnInit {
         this.carEntity.imagem = result;
       }
     });
+  }
+
+  public changeShowImage(toggle: boolean) {
+    this.showImage = toggle;
   }
 }
