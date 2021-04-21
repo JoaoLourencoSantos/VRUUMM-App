@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { NgxMaskModule } from 'ngx-mask';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
@@ -23,6 +24,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     PagesRoutingModule,
     MaterialModule,
     NgxCurrencyModule,
+    NgxMaskModule,
   ],
 })
 export class PagesModule {}

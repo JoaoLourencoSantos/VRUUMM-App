@@ -69,6 +69,12 @@ section.box-content {
 
     border-top: 1px solid rgba(0, 0, 0, 0.329);
 
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
     .lines {
       display: flex;
       flex-direction: row;
@@ -90,7 +96,8 @@ section.box-content {
 }
 
 .divider {
-  border-top: 1px solid rgba(0, 0, 0, 0.329);
+  border-top: .8px solid #00000026;
+  width: 70%;
 }
 
 .input-search {
@@ -109,7 +116,9 @@ section.box-content {
     vertical-align: middle;
     margin-left: 5%;
     width: 10%;
-    font-size: 1.5rem;
+
+    margin-top: -4%;
+    font-size: 2rem;
 
     cursor: pointer;
 

@@ -29,18 +29,15 @@
         </mat-form-field>
       </div>
 
-
       <div class="divider"></div>
 
       <div class="lines tre-col">
-
-
 
         <div class="input-search">
 
           <mat-form-field appearance="outline">
             <mat-label>Digite seu cep ... <span class="input-required">*</span></mat-label>
-            <input name="cep" matInput [(ngModel)]="this.address.cep">
+            <input name="cep" matInput [(ngModel)]="this.address.cep" mask='99999-999'>
           </mat-form-field>
 
           <mat-icon matSuffix (click)="this.findAddress()">search</mat-icon>
