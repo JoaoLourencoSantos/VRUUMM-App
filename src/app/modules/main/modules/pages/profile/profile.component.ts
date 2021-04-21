@@ -17,8 +17,6 @@ export class ProfileComponent implements OnInit {
   public findAddress(): void {
     this.addressService.find(this.address.cep).subscribe((result) => {
       if (result) {
-        console.log(result);
-
         this.address = { ...result };
       }
     });

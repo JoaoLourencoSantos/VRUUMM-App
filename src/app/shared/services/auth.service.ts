@@ -16,9 +16,6 @@ export class AuthService {
 
   public get session(): number {
     const value = localStorage.getItem('user-logged');
-
-    console.log(value);
-
     return parseInt(value);
   }
 
