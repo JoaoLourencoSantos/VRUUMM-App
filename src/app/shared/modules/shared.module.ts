@@ -1,3 +1,4 @@
+import { SocketService } from './../services/socket.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     AuthService,
     LoaderService,
     NgxImageCompressService,
+    SocketService
   ],
 })
 export class SharedModule {}
