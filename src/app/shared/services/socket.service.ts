@@ -1,6 +1,7 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { io } from 'socket.io-client';
 
@@ -17,7 +18,7 @@ export class SocketService {
   private connect(): void {
     console.log(' [*] Init connection with socket');
 
-    this.socket = io('http://localhost:8080', {
+    this.socket = io(environment.SOCKET_PATH, {
       reconnectionDelayMax: 10000,
       auth: {
         token: '123',
