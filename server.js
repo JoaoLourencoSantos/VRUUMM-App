@@ -1,9 +1,10 @@
+const rabbiMQ = require("amqplib/callback_api");
+const { Server } = require("socket.io");
 const express = require("express");
 const path = require("path");
+const http = require("http");
 const cors = require("cors");
 const app = express();
-
-const rabbiMQ = require("amqplib/callback_api");
 
 const AMQP_URL =
   "amqps://oshgkrzg:UGeGl_ODOBs97UbTqKd00_CfN0oQRUsw@clam.rmq.cloudamqp.com/oshgkrzg";
@@ -16,22 +17,21 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname + "/dist/Vruumm/index.html"));
 });
 
-let server = require("http").Server(app);
-server = server.listen(process.env.PORT || 8080, () => {
-  console.log(`started on port: ${process.env.PORT || 8080}`);
+const server = http.createServer(app);
+server.listen(process.env.PORT || 8080, () => {
+  console.log(` [*] Application started on port: ${process.env.PORT || 8080}`);
 });
 
-const socketIO = require("socket.io")(server, {
+const socketIO = new Server(server, {
   cors: {
     origin: "*",
   },
 });
 
 socketIO.on("connection", (socket) => {
-  console.log("Client connected");
-  socket.on("disconnect", () => console.log("Client disconnected"));
+  console.log(" [*] Client connected - " + socket.id);
 
-  socketIO.emit("notify", "TESTE");
+  socket.on("disconnect", () => console.log(" [*] Client disconnected"));
 });
 
 socketIO.on("new-message", (msg) => {
@@ -50,7 +50,7 @@ rabbiMQ.connect(AMQP_URL, function (err, conn) {
 });
 
 function processMessage({ content }) {
-  console.log("AQUI - CONSUME");
+  console.log(" [*] Processing message from queue ");
   console.log(content.toString());
   socketIO.emit("notify", content.toString());
 }

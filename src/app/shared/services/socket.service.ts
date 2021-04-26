@@ -14,37 +14,33 @@ export class SocketService {
     this.connect();
   }
 
-  connect() {
-    console.log('AQUi');
+  private connect(): void {
+    console.log(' [*] Init connection with socket');
+
     this.socket = io('http://localhost:8080', {
       reconnectionDelayMax: 10000,
       auth: {
         token: '123',
       },
-      query: {
-        'my-key': 'my-value',
-      },
     });
 
     this.socket.on('connect', () => {
-      console.log('AQUI');
-      console.log(this.socket.id);
-      console.log(this.socket.connected);
+      console.log(' [*] Client connected - ' + this.socket.id);
     });
 
     this.socket.on('disconnect', () => {
-      console.log('DISCONNECT');
+      console.log(' [*] Client disconnected ');
     });
   }
 
-  emit() {
-    this.socket.emit('new-message', 'message');
+  public emit(event: string, value: any): void {
+    this.socket.emit(event, value);
   }
 
-  getMessages(): Observable<any> {
+  public getMessages(): Observable<any> {
     return new Observable((observer) => {
       this.socket.on('notify', (data) => {
-        console.log('Received message from Websocket Server');
+        console.log(' [*] Receive message from socket - ' + data);
         observer.next(data);
       });
     });
