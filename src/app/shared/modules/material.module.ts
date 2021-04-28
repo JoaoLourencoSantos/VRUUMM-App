@@ -1,3 +1,4 @@
+import { MatPaginator } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +13,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const material = [
   MatFormFieldModule,
@@ -25,7 +28,9 @@ const material = [
   MatDialogModule,
   MatSlideToggleModule,
   MatButtonModule,
-  MatDividerModule
+  MatDividerModule,
+  MatTableModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

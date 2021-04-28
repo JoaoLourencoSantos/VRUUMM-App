@@ -1,0 +1,114 @@
+*:focus {
+  outline: 0 !important;
+}
+
+section.box-content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .totalizators {
+    margin-top: 1.5% !important;
+
+    width: 80%;
+    height: 20%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .green {
+      background-color: #009688;
+      color: white;
+    }
+
+    .red {
+      background-color: #ff5722;
+      color: white;
+    }
+
+    .yelow {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    .totalizator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      height: 90%;
+      width: 20%;
+
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.479);
+
+      .total {
+        width: 100%;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        font-size: 4.5rem;
+        font-weight: bolder;
+      }
+
+      .name {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .list-rents {
+    margin-top: 3% !important;
+    width: 100%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 80%;
+    }
+
+    table {
+      width: 100%;
+    }
+  }
+}
+
+article.box-empty {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  div {
+    margin-left: 3%;
+    margin-top: 1%;
+    font-size: 1.2rem;
+    max-width: 280px;
+  }
+
+  img {
+    width: 15%;
+  }
+}
