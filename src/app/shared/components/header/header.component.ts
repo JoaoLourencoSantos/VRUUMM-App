@@ -1,7 +1,9 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { AproveComponent } from '../aprove/aprove.component';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +13,17 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent implements OnInit {
   page: string = 'home';
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    public dialog: MatDialog
+  ) {
     this.page = this.activateRoute;
   }
 
   ngOnInit(): void {}
 
-  isActive(page: string) {
+  public isActive(page: string) {
     return this.page === page;
   }
 
@@ -35,28 +41,32 @@ export class HeaderComponent implements OnInit {
     return route[2];
   }
 
-  logout() {
+  public logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
 
-  toHome(): void {
+  public toHome(): void {
     this.router.navigate(['/app/home']);
     this.page = 'home';
   }
 
-  toCars(): void {
+  public toCars(): void {
     this.router.navigate(['/app/cars']);
     this.page = 'cars';
   }
 
-  toRents(): void {
+  public toRents(): void {
     this.router.navigate(['/app/rents']);
     this.page = 'rents';
   }
 
-  toProfile(): void {
+  public toProfile(): void {
     this.router.navigate(['/app/profile']);
     this.page = 'profile';
+  }
+
+  public showAproveModal(): void {
+    this.dialog.open(AproveComponent);
   }
 }
