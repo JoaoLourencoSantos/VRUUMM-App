@@ -190,3 +190,7 @@ body {
 .mat-progress-bar-buffer {
   background-color: #f0f0f0;
 }
+
+*:focus {
+  outline: 0 !important;
+}

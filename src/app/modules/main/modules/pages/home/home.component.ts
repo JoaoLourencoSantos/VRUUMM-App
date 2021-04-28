@@ -8,8 +8,32 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['reference', 'user', 'value', 'period', 'status'];
+  displayedColumns: string[] = [
+    'reference',
+    'user',
+    'value',
+    'period',
+    'status',
+  ];
   dataSource = new MatTableDataSource<any>([]);
+
+  dataTotalizators: any = [
+    {
+      name: 'Alugados',
+      value: '35',
+      color: 'green',
+    },
+    {
+      name: 'Solicitações',
+      value: '01',
+      color: 'yelow',
+    },
+    {
+      name: 'Recusados',
+      value: '10',
+      color: 'red',
+    },
+  ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

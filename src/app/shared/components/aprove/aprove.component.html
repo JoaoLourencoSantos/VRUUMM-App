@@ -1,1 +1,40 @@
-<p>aprove works!</p>
+<div class="content">
+  <section class="list-solicitation">
+
+    <div class="box-solicitation" *ngFor="let item of list">
+      <div class="left-side"><img src="{{getImage()}}" alt=""></div>
+      <div class="right-side">
+        <div>
+          <div class="label-details">Carro</div>
+          <div class="value-details">Fiat Uno 2021</div>
+        </div>
+        <div>
+          <div class="label-details">Marca</div>
+          <div class="value-details">Fiat Uno 2021</div>
+        </div>
+        <div>
+          <div class="label-details">Valor</div>
+          <div class="value-details">Fiat Uno 2021</div>
+        </div>
+        <div>
+          <div class="label-details">Solicitante</div>
+          <div class="value-details">Fiat Uno 2021</div>
+        </div>
+      </div>
+
+      <div class="aprove-side">
+
+        <span href="#" class="button btn-green"><span>Aceitar</span>
+          <mat-icon> check</mat-icon>
+        </span>
+
+        <span href="#" class="button btn-red"> <span>Rejeitar</span>
+          <mat-icon> clear</mat-icon>
+        </span>
+
+      </div>
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,152 @@
+.content {
+  width: 55vw;
+  height: 50vh;
+  overflow: hidden;
+}
+
+.list-solicitation {
+  width: 55vw;
+  height: 50vh;
+
+  overflow: auto;
+  padding: 0% 1% 1% 1%;
+}
+
+.box-solicitation {
+  width: 100%;
+  height: 120px;
+
+  margin-top: 2%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgb(0 0 0 / 50%);
+
+  padding: 1%;
+
+  .left-side {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      border-radius: 50%;
+      width: 50%;
+    }
+  }
+
+  .right-side {
+    height: 100%;
+    width: 50%;
+
+    border-left: 1px solid rgba(0, 0, 0, 0.274);
+
+    padding-left: 4%;
+
+    div {
+      width: 100%;
+      margin-top: 0.5%;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .label-details {
+      font-size: 1.2rem;
+      font-weight: 600;
+
+      width: 30%;
+    }
+
+    .value-details {
+      font-size: 1rem;
+      width: 70%;
+    }
+  }
+
+  .aprove-side {
+    height: 100%;
+    width: 30%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.button {
+  cursor: pointer;
+  width: 70%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  margin-bottom: 1%;
+
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  border-radius: 5px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    border-radius: 5px;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    transition: all 0.3s;
+    z-index: -1;
+    border-radius: 5px;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+.btn-red {
+  &:after {
+    background-color: #f44336;
+  }
+  &:before {
+    background-color: darken(#f44336, 15%);
+  }
+}
+
+.btn-green {
+  &:after {
+    background-color: #009688;
+  }
+  &:before {
+    background-color: darken(#009688, 15%);
+  }
+}

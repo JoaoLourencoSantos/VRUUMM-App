@@ -2,39 +2,16 @@
 
   <div class="totalizators">
 
-    <div class="totalizator green">
+    <div *ngFor="let item of this.dataTotalizators" class="totalizator {{item.color}}">
       <div class="total">
         <span>
-          35
+          {{item.value}}
         </span>
       </div>
       <div class="name">
-        Alugados
+        {{item.name}}
       </div>
     </div>
-
-    <div class="totalizator yelow">
-      <div class="total">
-        <span>
-          01
-        </span>
-      </div>
-      <div class="name">
-        Solicitações
-      </div>
-    </div>
-
-    <div class="totalizator red">
-      <div class="total">
-        <span>
-          10
-        </span>
-      </div>
-      <div class="name">
-        Recusados
-      </div>
-    </div>
-
 
   </div>
   <div class="list-rents">
