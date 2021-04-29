@@ -1,9 +1,11 @@
-import { environment } from './../../../environments/environment';
+import { SolicitationDTO } from 'src/app/shared/models/dto/solicitation.dto';
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
 import { io } from 'socket.io-client';
+import { ConsumerService } from './consumer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -38,11 +40,11 @@ export class SocketService {
     this.socket.emit(event, value);
   }
 
-  public getMessages(): Observable<any> {
+  public getMessages(): Observable<SolicitationDTO> {
     return new Observable((observer) => {
       this.socket.on('notify', (data) => {
         console.log(' [*] Receive message from socket - ' + data);
-        observer.next(data);
+        observer.next(JSON.parse(JSON.stringify(data)));
       });
     });
   }

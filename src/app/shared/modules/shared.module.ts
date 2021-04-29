@@ -10,7 +10,6 @@ import { AuthService } from '../services/auth.service';
 import { LoaderService } from '../services/loader.service';
 import { ToastService } from '../services/toast.service';
 import { HeaderComponent } from './../components/header/header.component';
-import { SocketService } from './../services/socket.service';
 import { MaterialModule } from './material.module';
 
 const generic = [
@@ -28,8 +27,7 @@ const generic = [
     ToastService,
     AuthService,
     LoaderService,
-    NgxImageCompressService,
-    SocketService,
+    NgxImageCompressService
   ],
 })
 export class SharedModule {}

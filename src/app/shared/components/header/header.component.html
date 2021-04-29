@@ -11,7 +11,7 @@
 
   <ul class="menu">
 
-    <div class="actions">
+    <div class="actions" *ngIf="!($store | async).isEmpty">
       <mat-icon (click)="showAproveModal()" matTooltipPosition="left" matTooltip="Visualizar notificações"
         matTooltipClass="tooltip-white">notifications</mat-icon>
     </div>
@@ -24,10 +24,6 @@
       <a class="nav-link" (click)='this.toCars()'>Carros</a>
       <div *ngIf="this.isActive('cars')" class="subline"></div>
     </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" (click)='this.toRents()'>Aluguéis</a>
-      <div *ngIf="this.isActive('rents')" class="subline"></div>
-    </li> -->
     <li class="nav-item">
       <a class="nav-link" (click)='this.toProfile()'>Perfil</a>
       <div *ngIf="this.isActive('profile')" class="subline"></div>

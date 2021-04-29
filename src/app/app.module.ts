@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoaderInterceptor } from './core/interceptor/loader.interceptor';
+import { SocketService } from './core/socket/socket.service';
 import { SharedModule } from './shared/modules/shared.module';
 
 export const customCurrencyMaskConfig = {
@@ -44,6 +45,7 @@ export const customCurrencyMaskConfig = {
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    SocketService,
   ],
   bootstrap: [AppComponent],
 })

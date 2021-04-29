@@ -1,9 +1,12 @@
+import { Observable, BehaviorSubject } from 'rxjs';
+import { ConsumerService } from './../../../core/socket/consumer.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { AproveComponent } from '../aprove/aprove.component';
+import { StoreDTO } from '../../models/dto/store.dto';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +14,18 @@ import { AproveComponent } from '../aprove/aprove.component';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  public $store: BehaviorSubject<StoreDTO>;
+
   page: string = 'home';
 
   constructor(
     private router: Router,
+    public dialog: MatDialog,
     private authService: AuthService,
-    public dialog: MatDialog
+    public consumer: ConsumerService
   ) {
     this.page = this.activateRoute;
+    this.$store = this.consumer.getMessages();
   }
 
   ngOnInit(): void {}

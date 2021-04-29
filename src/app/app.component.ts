@@ -1,7 +1,10 @@
-import { map } from 'rxjs/operators';
-import { SocketService } from './shared/services/socket.service';
+import { AproveComponent } from './shared/components/aprove/aprove.component';
+import { MatDialog } from '@angular/material/dialog';
+import { SolicitationDTO } from 'src/app/shared/models/dto/solicitation.dto';
+import { ConsumerService } from './core/socket/consumer.service';
 import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
+
+import { SocketService } from './core/socket/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +18,32 @@ export class AppComponent {
   newMessage: string;
   messageList: any[] = [];
 
-  constructor(private service: SocketService) {}
+  constructor(
+    private service: SocketService,
+    private consumer: ConsumerService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
+    this.consume();
     this.sync();
   }
 
-  sync() {
-    this.service.getMessages().subscribe((result: any): any => {
+  private sync(): void {
+    this.service.getMessages().subscribe((result: SolicitationDTO): void => {
+      console.log(' [*] Result of consume');
       console.log(result);
+
+      this.consumer.add(result);
+      this.showAproveModal();
     });
+  }
+
+  private consume(): void {
+    this.consumer.init();
+  }
+
+  public showAproveModal(): void {
+    this.dialog.open(AproveComponent);
   }
 }

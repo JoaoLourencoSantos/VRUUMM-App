@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+import { ConsumerService } from './../../../core/socket/consumer.service';
+import { StoreDTO } from './../../models/dto/store.dto';
 
 @Component({
   selector: 'app-aprove',
@@ -6,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aprove.component.scss'],
 })
 export class AproveComponent implements OnInit {
-  list = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2];
+  public $store: BehaviorSubject<StoreDTO>;
 
-  constructor() {}
+  constructor(public consumer: ConsumerService) {
+    this.$store = consumer.getMessages();
+  }
 
   ngOnInit(): void {}
 

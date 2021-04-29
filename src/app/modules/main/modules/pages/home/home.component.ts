@@ -19,9 +19,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   dataTotalizators: any = [
     {
-      name: 'Alugados',
+      name: 'Finalizados',
       value: '35',
       color: 'green',
+    },
+    {
+      name: 'Em andamento',
+      value: '05',
+      color: 'blue',
     },
     {
       name: 'Solicitações',

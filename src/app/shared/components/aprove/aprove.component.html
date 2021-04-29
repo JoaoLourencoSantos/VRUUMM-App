@@ -1,7 +1,7 @@
 <div class="content">
   <section class="list-solicitation">
 
-    <div class="box-solicitation" *ngFor="let item of list">
+    <div class="box-solicitation" *ngFor="let item of (this.$store |async).list">
       <div class="left-side"><img src="{{getImage()}}" alt=""></div>
       <div class="right-side">
         <div>
