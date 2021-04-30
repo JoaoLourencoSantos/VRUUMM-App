@@ -10,8 +10,8 @@
       </div>
 
       <div class="top-details">
-        <span>João Marcos Loureço dos santos</span>
-        <span>joão@gmail.com </span>
+        <span>{{this.user.email}}</span>
+        <span>{{this.user.email}}</span>
       </div>
 
     </div>
@@ -20,12 +20,24 @@
       <div class="lines">
         <mat-form-field appearance="outline">
           <mat-label>Digite o seu nome... <span class="input-required">*</span></mat-label>
-          <input name="modelo" matInput>
+          <input name="name" matInput [(ngModel)]="this.user.nome">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Digite o seu email... <span class="input-required">*</span> </mat-label>
-          <input name="marca" matInput>
+          <input name="email" matInput [(ngModel)]="this.user.email">
+        </mat-form-field>
+      </div>
+
+      <div class="lines">
+        <mat-form-field appearance="outline">
+          <mat-label>Digite o seu cpf... <span class="input-required">*</span></mat-label>
+          <input mask="000.000.000-99" name="cpf" matInput [(ngModel)]="this.user.cpf">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Digite o seu telefone... <span class="input-required">*</span> </mat-label>
+          <input mask="(00) 0 0000-0000" name="phone" matInput [(ngModel)]="this.user.numeroTelefone">
         </mat-form-field>
       </div>
 
@@ -69,7 +81,7 @@
 
 
       <div class="actions">
-        <span class="confirm" mat-button >ATUALIZAR</span>
+        <span class="confirm" mat-button (click)="this.update()">ATUALIZAR</span>
       </div>
 
     </form>

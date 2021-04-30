@@ -1,3 +1,4 @@
+import { AddressDTO } from './address.dto';
 import { UserTypeEnum } from '../enum/user.type.enum';
 
 export class UserDTO {
@@ -8,6 +9,8 @@ export class UserDTO {
   numeroTelefoneUsuario: string;
 
   perfilUsuario: UserTypeEnum = UserTypeEnum.LOCADOR;
+
+  endereco: AddressDTO = new AddressDTO();
 
   public isValid(): boolean {
     return this.emailUsuario && this.nomeUsuario && this.senhaUsuario
