@@ -4,8 +4,10 @@
     <div class="box-search">
 
       <div class="input-search">
-        <input name="email" [(ngModel)]="this.searchKey" matInput placeholder="Digite a sua pesquisa...">
-        <div matTooltipPosition="right" matTooltip="Clique aqui para consultar" matTooltipClass="tooltip-red" (click)="this.populate()">
+        <input (keyup.enter)="this.populate($event)" name="email" [(ngModel)]="this.searchKey" matInput
+          placeholder="Digite a sua pesquisa...">
+        <div matTooltipPosition="right" matTooltip="Clique aqui para consultar" matTooltipClass="tooltip-red"
+          (click)="this.populate()">
           <mat-icon matSuffix>search</mat-icon>
         </div>
       </div>
@@ -38,7 +40,7 @@
     </mat-card>
   </section>
 
-  <article class="box-empty"  *ngIf="this.isEmpty">
+  <article class="box-empty" *ngIf="this.isEmpty">
     <img src="../../../../../../../assets/images/empty.svg" alt="">
     <div> Não há dados, cadastre aqui seus carros...</div>
   </article>

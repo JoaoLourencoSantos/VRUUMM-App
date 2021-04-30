@@ -58,7 +58,10 @@ export class ProfileComponent implements OnInit {
   public update(): void {
     this.user.endereco = { ...this.address };
 
-    if (!SimpleUserDTO.isValid(this.user)) {
+    if (
+      !SimpleUserDTO.isValid(this.user) ||
+      !AddressDTO.isValid(this.user.endereco)
+    ) {
       this.toastService.infoErroAlert();
       return;
     }
