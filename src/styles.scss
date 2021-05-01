@@ -147,14 +147,14 @@ body {
 /// TOOLTIP STYLE
 //////////////////////
 .tooltip-red {
-  background-color: $primary;
+  background-color: #f44336;
   color: white;
   font-weight: 500;
   font-size: 0.7rem;
 }
 
 .tooltip-green {
-  background-color: #0cb05b;
+  background-color: #009688;
   color: white;
   font-weight: 500;
   font-size: 0.7rem;
@@ -174,6 +174,13 @@ body {
   font-size: 0.7rem;
 }
 
+.tooltip-gray {
+  background-color: #607d8b;
+  color: white;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
 //////////////////////
 /// COLOR STYLE
 //////////////////////
@@ -188,12 +195,17 @@ body {
 }
 
 .color-red {
-  color: $primary;
+  color: #f44336;
+  font-weight: 500;
+}
+
+.color-gray {
+  color: #607d8b;
   font-weight: 500;
 }
 
 .color-green {
-  color: #0cb05b;
+  color: #009688;
   font-weight: 500;
 }
 

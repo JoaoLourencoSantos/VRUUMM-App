@@ -1,4 +1,3 @@
-import { UserDetailsComponent } from './../../../../../shared/components/details/user-details/user-details.component';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -6,8 +5,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { RentStateEnum } from 'src/app/shared/models/enum/rent.state.enum';
 
 import { CarDetailsComponent } from './../../../../../shared/components/details/car-details/car-details.component';
+import { UserDetailsComponent } from './../../../../../shared/components/details/user-details/user-details.component';
 import { SolicitationDTO } from './../../../../../shared/models/dto/solicitation.dto';
 import { SummaryDTO } from './../../../../../shared/models/dto/summary.dto';
+import { ToastService } from './../../../../../shared/services/toast.service';
 import { RentService } from './../../services/rent.service';
 
 @Component({
@@ -19,9 +20,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = [
-    'key',
-    'value',
     'period',
+    'value',
     'devolution',
     'status',
     'user',
@@ -56,7 +56,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     },
   ];
 
-  constructor(private rentService: RentService, public dialog: MatDialog) {}
+  constructor(
+    private rentService: RentService,
+    public dialog: MatDialog,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.populate();
@@ -67,12 +71,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   private populate(): void {
+    this.populateDataSource();
+    this.populateSummary();
+  }
+
+  private populateDataSource(): void {
     this.rentService.find().subscribe((result: SolicitationDTO[]) => {
       if (!result) return;
       this.dataSource = new MatTableDataSource<SolicitationDTO>(result);
     });
-
-    this.populateSummary();
   }
 
   private populateSummary(): void {
@@ -134,5 +141,41 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dialog.open(UserDetailsComponent, {
       data: usuarioLocatario,
     });
+  }
+
+  public aprove({ codigo, situacao }: SolicitationDTO) {
+    if (situacao !== 'PENDENTE') {
+      this.toastService.baseWarnAlertWithMessage(
+        'Esta solicitação já foi aprovada!'
+      );
+
+      return;
+    }
+
+    this.update(codigo, 'EM_ANDAMENTO' as RentStateEnum);
+  }
+
+  public reprove({ codigo }: SolicitationDTO) {
+    this.update(codigo, 'REJEITADO' as RentStateEnum);
+  }
+
+  private update(code: number | string, status: RentStateEnum) {
+    this.rentService.update(code, status).subscribe(
+      (result) => {
+        if (!result) return;
+
+        if (!result.sucesso) {
+          this.toastService.baseWarnAlertWithMessage(result.mensagem);
+          return;
+        }
+
+        this.toastService.successAlert();
+
+        this.populate();
+      },
+      ({ error }) => {
+        this.toastService.baseWarnAlertWithMessage(error.mensagem);
+      }
+    );
   }
 }
