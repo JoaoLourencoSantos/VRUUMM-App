@@ -25,6 +25,14 @@ export class UserService {
       .pipe(map((result: ResponseDTO) => result.corpo));
   }
 
+  findOne(code: number | string): Observable<SimpleUserDTO> {
+    return this.http
+      .get<ResponseDTO>(`${this.API_BASEPATH}/usuarios/${code}`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .pipe(map((result: ResponseDTO) => result.corpo));
+  }
+
   update(entity: UserPatchDTO): Observable<ResponseDTO> {
     return this.http.patch<ResponseDTO>(
       `${this.API_BASEPATH}/usuarios/${this.auth.session}`,

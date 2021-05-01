@@ -1,0 +1,66 @@
+<section>
+  <div class="header">
+    <div class="header-title">{{'Detalhes do carro'}}</div>
+    <mat-icon class="btn-close" mat-dialog-close>highlight_off</mat-icon>
+  </div>
+  <div class="body">
+    <div class="toggle-box">
+      <mat-slide-toggle disabled [(ngModel)]="carEntity.disponibilidade">
+        {{carEntity.disponibilidade? 'Disponível': 'Indisponível'}} </mat-slide-toggle>
+    </div>
+    <div class="main-box">
+      <section class="side-avatar">
+        <img [src]="this.getImage(carEntity.imagem)">
+      </section>
+      <section class="side-form">
+        <div class="box-line">
+
+          <mat-form-field>
+            <mat-label>Modelo </mat-label>
+            <input [(ngModel)]="carEntity.modelo" name="modelo" matInput disabled>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Marca </mat-label>
+            <input [(ngModel)]="carEntity.marca" name="marca" matInput disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="box-line">
+
+          <mat-form-field>
+            <mat-label>Placa </mat-label>
+            <input [(ngModel)]="carEntity.placa" name="placa" matInput disabled>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Cor</mat-label>
+            <input [(ngModel)]="carEntity.cor" name="cor" matInput disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="box-line">
+
+          <mat-form-field>
+            <mat-label>Número de assentos </mat-label>
+            <input [(ngModel)]="carEntity.numeroDeAssentos" name="acentos" type="number" placeholder="Ex. 4" min="1"
+              max="12" matInput disabled>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Diária </mat-label>
+            <input [(ngModel)]="carEntity.precoDaDiaria" currencyMask name="diaria" matInput disabled>
+          </mat-form-field>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-box">
+      <mat-form-field appearance="outline">
+        <mat-label>Observações sobre o carro...</mat-label>
+        <textarea [(ngModel)]="carEntity.descricao" name="descricao" matInput disabled></textarea>
+      </mat-form-field>
+
+    </div>
+  </div>
+</section>

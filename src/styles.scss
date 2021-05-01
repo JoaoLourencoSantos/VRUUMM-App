@@ -153,11 +153,48 @@ body {
   font-size: 0.7rem;
 }
 
-.tooltip-white {
-  background-color: white;
-  color:  rgba(0, 0, 0, 0.541) !important;
+.tooltip-green {
+  background-color: #0cb05b;
+  color: white;
   font-weight: 500;
   font-size: 0.7rem;
+}
+
+.tooltip-orange {
+  background-color: #ea8d16;
+  color: white;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.tooltip-white {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.541) !important;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+//////////////////////
+/// COLOR STYLE
+//////////////////////
+
+.label-action {
+  cursor: pointer;
+}
+
+.color-orange {
+  color: #ea8d16;
+  font-weight: 500;
+}
+
+.color-red {
+  color: $primary;
+  font-weight: 500;
+}
+
+.color-green {
+  color: #0cb05b;
+  font-weight: 500;
 }
 
 //////////////////////

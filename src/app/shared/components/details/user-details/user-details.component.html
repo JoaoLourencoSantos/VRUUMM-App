@@ -1,0 +1,53 @@
+<section>
+  <div class="header">
+    <div class="header-title">{{'Detalhes do locatário'}}</div>
+    <mat-icon class="btn-close" mat-dialog-close>highlight_off</mat-icon>
+  </div>
+  <div class="body">
+    <div class="main-box">
+      <section class="side-avatar">
+        <img [src]="this.getImage(userEntity.nome)">
+      </section>
+      <section class="side-form">
+        <div class="box-line">
+
+          <mat-form-field>
+            <mat-label>Nome </mat-label>
+            <input [(ngModel)]="userEntity.nome" name="name" matInput disabled>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>E-mail </mat-label>
+            <input [(ngModel)]="userEntity.email" name="email" matInput disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="box-line">
+
+          <mat-form-field>
+            <mat-label>CPF </mat-label>
+            <input mask="000.000.000-99" [(ngModel)]="userEntity.cpf" name="cpf" matInput disabled>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Telefone</mat-label>
+            <input mask="(00) 0 0000-0000" [(ngModel)]="userEntity.numeroTelefone" name="phone" matInput disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="box-line">
+
+          <mat-form-field>
+            <mat-label>CEP </mat-label>
+            <input  mask='99999-999' [(ngModel)]="userEntity.endereco.cep" name="cep" matInput disabled>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>UF </mat-label>
+            <input [(ngModel)]="userEntity.endereco.uf" name="uf" matInput disabled>
+          </mat-form-field>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

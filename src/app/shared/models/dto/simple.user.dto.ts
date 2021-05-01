@@ -2,6 +2,8 @@ import { AddressDTO } from './address.dto';
 import { UserTypeEnum } from '../enum/user.type.enum';
 
 export class SimpleUserDTO {
+  codigo?: string = null;
+
   email?: string = null;
   senha?: string = null;
   nome?: string = null;

@@ -1,0 +1,100 @@
+@import "../../../../../variables.scss";
+
+section {
+  width: 40vw;
+  height: 80%;
+
+  padding: 0 !important;
+
+  display: flex;
+  flex-direction: column;
+
+  div.header {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: $primary;
+
+    div.header-title {
+      font-size: 2rem;
+      width: 90%;
+      font-weight: 500;
+    }
+
+    .btn-close {
+      width: 10%;
+      font-size: 2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      color: #777777;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  div.body {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    .main-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .details-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    section.side-avatar {
+      width: 30%;
+      height: auto;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+    }
+
+    section.side-form {
+      width: 65%;
+      height: auto;
+
+      .box-line {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        mat-form-field {
+          width: 48%;
+        }
+      }
+    }
+  }
+}

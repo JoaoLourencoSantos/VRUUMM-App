@@ -30,6 +30,14 @@ export class CarService {
       .pipe(map((result: ResponseDTO) => result.corpo));
   }
 
+  findOne(code: number | string): Observable<CarDTO> {
+    return this.http
+      .get<ResponseDTO>(`${this.API_BASEPATH}/carros/${code}`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .pipe(map((result: ResponseDTO) => result.corpo));
+  }
+
   create(car: CarDTO): Observable<ResponseDTO> {
     car.codigoUsuarioDonoDoCarro = this.auth.session;
     return this.http.post<ResponseDTO>(`${this.API_BASEPATH}/carros`, car, {

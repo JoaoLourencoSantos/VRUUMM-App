@@ -54,7 +54,7 @@ export class ConsumerService {
     console.log(data);
 
     data.list.filter((element) => {
-      return element.id !== id;
+      return element.codigo !== id;
     });
 
     data.isEmpty = data.list.length === 0;

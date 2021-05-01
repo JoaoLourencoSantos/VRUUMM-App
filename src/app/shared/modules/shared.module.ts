@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxImageCompressService } from 'ngx-image-compress';
 
 import { AproveComponent } from '../components/aprove/aprove.component';
+import { CarDetailsComponent } from '../components/details/car-details/car-details.component';
+import { UserDetailsComponent } from '../components/details/user-details/user-details.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { LoaderComponent } from '../components/loader/loader.component';
 import { AuthService } from '../services/auth.service';
@@ -17,6 +19,8 @@ const generic = [
   FooterComponent,
   LoaderComponent,
   AproveComponent,
+  UserDetailsComponent,
+  CarDetailsComponent
 ];
 
 @NgModule({
