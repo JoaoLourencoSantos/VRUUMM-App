@@ -45,7 +45,6 @@ export class ProfileComponent implements OnInit {
   public findUser(): void {
     this.userService.find().subscribe((result: any) => {
       if (result) {
-        console.log(result);
         this.user = { ...result };
 
         if (this.user.endereco) {
