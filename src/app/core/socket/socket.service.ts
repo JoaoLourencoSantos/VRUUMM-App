@@ -1,21 +1,25 @@
-import { SolicitationDTO } from 'src/app/shared/models/dto/solicitation.dto';
-import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
-
-import { io } from 'socket.io-client';
-import { ConsumerService } from './consumer.service';
+import { io, Socket } from 'socket.io-client';
+import { SolicitationDTO } from 'src/app/shared/models/dto/solicitation.dto';
 import { AuthService } from 'src/app/shared/services/auth.service';
+
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SocketService {
-  private socket: any;
+  private socket: Socket;
 
   constructor(private auth: AuthService) {
-    this.connect();
+    if (!auth.isAuthenticated) {
+      return;
+    }
+
+    if (!this.isConnected()) {
+      this.connect();
+    }
   }
 
   private connect(): void {
@@ -37,6 +41,17 @@ export class SocketService {
     });
   }
 
+  public isConnected(): boolean {
+    if (!this.socket) return false;
+
+    return this.socket.connected;
+  }
+
+  public disconnect() {
+    this.socket.close();
+    this.socket.disconnect();
+  }
+
   public emit(event: string, value: any): void {
     this.socket.emit(event, value);
   }
@@ -44,7 +59,7 @@ export class SocketService {
   public getMessages(): Observable<SolicitationDTO> {
     return new Observable((observer) => {
       this.socket.on('notify', (data) => {
-        console.log(' [*] Receive message from socket - ' + data);
+        console.log(' [*] Receive message from socket');
         observer.next(JSON.parse(JSON.stringify(data)));
       });
     });

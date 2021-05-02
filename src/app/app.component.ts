@@ -19,8 +19,8 @@ export class AppComponent {
   messageList: any[] = [];
 
   constructor(
-    private service: SocketService,
     private consumer: ConsumerService,
+    private service: SocketService,
     public dialog: MatDialog
   ) {}
 
@@ -30,6 +30,10 @@ export class AppComponent {
   }
 
   private sync(): void {
+    if (!this.service.isConnected) {
+      return;
+    }
+
     this.service.getMessages().subscribe((result: SolicitationDTO): void => {
       console.log(' [*] Result of consume');
       console.log(result);

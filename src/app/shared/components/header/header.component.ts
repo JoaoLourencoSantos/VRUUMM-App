@@ -1,3 +1,4 @@
+import { SocketService } from './../../../core/socket/socket.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ConsumerService } from './../../../core/socket/consumer.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,7 +23,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private authService: AuthService,
-    public consumer: ConsumerService
+    public consumer: ConsumerService,
+    private socket: SocketService
   ) {
     this.page = this.activateRoute;
     this.$store = this.consumer.getMessages();
@@ -50,6 +52,8 @@ export class HeaderComponent implements OnInit {
 
   public logout() {
     this.authService.logout();
+    this.socket.disconnect();
+
     this.router.navigate(['/login']);
   }
 

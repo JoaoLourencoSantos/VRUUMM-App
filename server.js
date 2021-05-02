@@ -8,7 +8,8 @@ const app = express();
 
 const AMQP_URL =
   "amqps://oshgkrzg:UGeGl_ODOBs97UbTqKd00_CfN0oQRUsw@clam.rmq.cloudamqp.com/oshgkrzg";
-const AMQP_QUEUE = "test-queue-dev";
+const AMQP_EXCHANGE = "pending-rents";
+const AMQP_QUEUE = "user-rents-queue";
 
 app.use(express.static(__dirname + "/dist/Vruumm"));
 app.use(cors());
@@ -28,29 +29,73 @@ const socketIO = new Server(server, {
   },
 });
 
-socketIO.on("connection", (socket) => {
-  console.log(" [*] Client connected - " + socket.id);
-
-  socket.on("disconnect", () => console.log(" [*] Client disconnected"));
-});
-
 socketIO.on("new-message", (msg) => {
   console.log(msg);
 });
 
-rabbiMQ.connect(AMQP_URL, function (err, conn) {
-  conn.createChannel(function (err, ch) {
-    ch.assertQueue(AMQP_QUEUE, { durable: true });
-    ch.prefetch(1);
+rabbiMQ.connect(AMQP_URL, function (error, connection) {
+  socketIO.on("connection", (socket) => {
+    console.log(" [*] Client connected - " + socket.id);
 
-    console.log(" [*] Waiting for messages in %s", AMQP_QUEUE);
+    if (!socket.handshake.auth.token) {
+      console.log(" [*] Invalid connection - " + socket.id);
+      return;
+    }
 
-    ch.consume(AMQP_QUEUE, processMessage, { noAck: true });
+    connection.createChannel(function (error1, channel) {
+      if (error1) {
+        throw error1;
+      }
+
+      const key =
+        "user-rents-" + socket.handshake.auth.token.toString() + "-key";
+
+      channel.assertExchange(AMQP_EXCHANGE, "topic", {
+        durable: false,
+      });
+
+      channel.assertQueue(
+        AMQP_QUEUE,
+        {
+          exclusive: true,
+        },
+        function (error2, config) {
+          if (error2) {
+            throw error2;
+          }
+
+          console.log(" [*] Routing key from user - " + key);
+
+          channel.bindQueue(config.queue, AMQP_EXCHANGE, key);
+
+          channel.consume(
+            config.queue,
+            (message) => {
+              try {
+                console.log(
+                  " [*] Processing message from exchange - " + AMQP_EXCHANGE
+                );
+                console.log(
+                  " [*] User id to send - " + socket.handshake.auth.token
+                );
+                socket.emit("notify", message.content.toString());
+
+                channel.ack(message);
+              } catch (err) {
+                console.log(" [*] Error on processing message from queue ");
+              }
+            },
+            {
+              noAck: false,
+            }
+          );
+        }
+      );
+
+      socket.on("disconnect", () => {
+        console.log(" [*] Client disconnected");
+        channel.close();
+      });
+    });
   });
 });
-
-function processMessage({ content }) {
-  console.log(" [*] Processing message from queue ");
-  console.log(content.toString());
-  socketIO.emit("notify", content.toString());
-}
