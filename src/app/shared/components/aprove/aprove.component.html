@@ -1,34 +1,40 @@
 <div class="content">
+  <div class="header">
+    <div class="header-title"> Solicitações pendentes</div>
+    <mat-icon class="btn-close" mat-dialog-close>highlight_off</mat-icon>
+  </div>
+
   <section class="list-solicitation">
 
     <div class="box-solicitation" *ngFor="let item of (this.$store |async).list">
-      <div class="left-side"><img src="{{getImage()}}" alt=""></div>
+      <div class="left-side"><img src="{{getImage(item.usuarioLocatario?item.usuarioLocatario.nome:'')}}" alt=""></div>
       <div class="right-side">
         <div>
           <div class="label-details">Carro</div>
-          <div class="value-details">Fiat Uno 2021</div>
+          <div class="value-details">{{item.carroAlugado ? item.carroAlugado.modelo : ''}}</div>
         </div>
         <div>
           <div class="label-details">Marca</div>
-          <div class="value-details">Fiat Uno 2021</div>
+          <div class="value-details">{{item.carroAlugado ? item.carroAlugado.marca:""}}</div>
         </div>
         <div>
-          <div class="label-details">Valor</div>
-          <div class="value-details">Fiat Uno 2021</div>
+          <div class="label-details">Valor total</div>
+          <div class="value-details">{{item.precoTotal | currency}}</div>
         </div>
         <div>
           <div class="label-details">Solicitante</div>
-          <div class="value-details">Fiat Uno 2021</div>
+          <div class="value-details">{{item.usuarioLocatario ? item.usuarioLocatario.nome + ' || ' +
+            item.usuarioLocatario.email : ""}} </div>
         </div>
       </div>
 
       <div class="aprove-side">
 
-        <span href="#" class="button btn-green"><span>Aceitar</span>
+        <span (click)="this.aprove()" class="button btn-green"><span>Aceitar</span>
           <mat-icon> check</mat-icon>
         </span>
 
-        <span href="#" class="button btn-red"> <span>Rejeitar</span>
+        <span (click)="this.aprove()" href="#" class="button btn-red"> <span>Rejeitar</span>
           <mat-icon> clear</mat-icon>
         </span>
 

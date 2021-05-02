@@ -38,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
 
   public getImage(name?: string): string {
     return (
-      `https://ui-avatars.com/api/?name=${name}` ||
+      `https://ui-avatars.com/api/?color=787878&name=${name}` ||
       '../../../../../../../assets/images/default-car.png'
     );
   }

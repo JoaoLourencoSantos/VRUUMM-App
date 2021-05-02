@@ -74,7 +74,13 @@ export class ConsumerService {
       return this.$data;
     }
 
-    this.$data.next(JSON.parse(result));
+    let value: StoreDTO = JSON.parse(result);
+
+    value.list = value.list.map((element: any) => JSON.parse(element));
+
+    console.log(value.list);
+
+    this.$data.next(value);
     return this.$data;
   }
 }

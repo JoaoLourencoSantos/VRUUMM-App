@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { io } from 'socket.io-client';
 import { ConsumerService } from './consumer.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ import { ConsumerService } from './consumer.service';
 export class SocketService {
   private socket: any;
 
-  constructor() {
+  constructor(private auth: AuthService) {
     this.connect();
   }
 
@@ -23,7 +24,7 @@ export class SocketService {
     this.socket = io(environment.SOCKET_PATH, {
       reconnectionDelayMax: 10000,
       auth: {
-        token: '123',
+        token: this.auth.session,
       },
     });
 
