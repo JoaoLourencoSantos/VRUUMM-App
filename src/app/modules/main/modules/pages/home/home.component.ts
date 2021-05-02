@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     {
       name: 'Solicitações',
       value: '0',
-      color: 'yelow',
+      color: 'orange',
     },
     {
       name: 'Recusados',
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       );
       this.dataTotalizators.push(
         this.buildTotalizator(
-          'yelow',
+          'orange',
           'Pendentes',
           result.quantidadeDeAlugueisPendentes
         )
@@ -143,6 +143,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
+  public enableAction({ situacao }: SolicitationDTO): boolean {
+    if (situacao === 'PENDENTE') {
+      return true;
+    }
+
+    return false;
+  }
+
+  public getStatusColor({ situacao }: SolicitationDTO): string {
+    if (situacao === ('REJEITADO' as RentStateEnum)) {
+      return 'status-red';
+    }
+
+    if (situacao === ('EM_ANDAMENTO' as RentStateEnum)) {
+      return 'status-blue';
+    }
+
+    if (situacao === ('PENDENTE' as RentStateEnum)) {
+      return 'status-orange';
+    }
+
+    return 'status-green';
+  }
+
   public aprove({ codigo, situacao }: SolicitationDTO) {
     if (situacao !== 'PENDENTE') {
       this.toastService.baseWarnAlertWithMessage(
@@ -155,7 +179,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.update(codigo, 'EM_ANDAMENTO' as RentStateEnum);
   }
 
-  public reprove({ codigo }: SolicitationDTO) {
+  public reprove({ codigo, situacao }: SolicitationDTO) {
+    if (situacao !== 'PENDENTE') {
+      return;
+    }
+
     this.update(codigo, 'REJEITADO' as RentStateEnum);
   }
 

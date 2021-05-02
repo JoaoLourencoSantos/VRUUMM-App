@@ -42,14 +42,16 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef> Status do aluguel </th>
-          <td mat-cell *matCellDef="let element"> {{ stateEnum[element.situacao] }} </td>
+          <td mat-cell *matCellDef="let element">
+            <span class="{{getStatusColor(element)}}">{{ stateEnum[element.situacao] }} </span>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="user">
           <th mat-header-cell *matHeaderCellDef> Detalhes do Solicitante </th>
           <td mat-cell *matCellDef="let element">
-            <mat-icon (click)="this.showUserDetails(element)" class="label-action color-gray" matTooltipPosition="above"
-              matTooltip="Visualizar detalhes!" matTooltipClass="tooltip-gray">
+            <mat-icon (click)="this.showUserDetails(element)" class="label-action color-vruumm"
+              matTooltipPosition="above" matTooltip="Visualizar detalhes!" matTooltipClass="tooltip-vruumm">
               assignment_ind</mat-icon>
           </td>
         </ng-container>
@@ -58,8 +60,8 @@
         <ng-container matColumnDef="car">
           <th mat-header-cell *matHeaderCellDef> Detalhes do Carro </th>
           <td mat-cell *matCellDef="let element">
-            <mat-icon (click)="this.showCarDetails(element)" class="label-action color-gray" matTooltipPosition="above"
-              matTooltip="Visualizar detalhes!" matTooltipClass="tooltip-gray">
+            <mat-icon (click)="this.showCarDetails(element)" class="label-action color-vruumm"
+              matTooltipPosition="above" matTooltip="Visualizar detalhes!" matTooltipClass="tooltip-vruumm">
               directions_car_filled</mat-icon>
           </td>
         </ng-container>
@@ -69,11 +71,13 @@
           <th mat-header-cell *matHeaderCellDef> Ações </th>
           <td mat-cell *matCellDef="let element">
             <div class="actions">
-              <mat-icon (click)="this.aprove(element)" class="label-action color-green" matTooltipPosition="above"
-                matTooltip="Aceitar!" matTooltipClass="tooltip-green">check_circle
+              <mat-icon (click)="this.aprove(element)"
+                class="label-action {{this.enableAction(element) ? 'color-green' :'disabled-icon'}}"
+                matTooltipPosition="above" matTooltip="Aceitar!" matTooltipClass="tooltip-green">check_circle
               </mat-icon>
-              <mat-icon (click)="this.reprove(element)" class="label-action color-red" matTooltipPosition="above"
-                matTooltip="Reprovar!" matTooltipClass="tooltip-red">cancel
+              <mat-icon (click)="this.reprove(element)"
+                class="label-action {{this.enableAction(element) ? 'color-red' :'disabled-icon'}}"
+                matTooltipPosition="above" matTooltip="Reprovar!" matTooltipClass="tooltip-red">cancel
               </mat-icon>
             </div>
           </td>

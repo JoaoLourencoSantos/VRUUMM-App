@@ -181,6 +181,20 @@ body {
   font-size: 0.7rem;
 }
 
+.tooltip-disabled {
+  background-color: gray;
+  color: white;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.tooltip-vruumm {
+  background-color: $primary;
+  color: white;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
 //////////////////////
 /// COLOR STYLE
 //////////////////////
@@ -191,6 +205,11 @@ body {
 
 .color-orange {
   color: #ea8d16;
+  font-weight: 500;
+}
+
+.color-vruumm {
+  color: $primary;
   font-weight: 500;
 }
 
@@ -207,6 +226,48 @@ body {
 .color-green {
   color: #009688;
   font-weight: 500;
+}
+
+.disabled-icon {
+  color: gray;
+  font-weight: 500;
+  cursor: auto;
+  pointer-events: none;
+}
+
+//////////////////////
+/// STATUS STYLE
+//////////////////////
+.status-green {
+  border-radius: 20px;
+  padding: 7px 15px;
+  border: 2px solid #009688;
+  background: #009688;
+  color: white;
+}
+
+.status-blue {
+  border-radius: 20px;
+  padding: 7px 15px;
+  border: 2px solid #2196f3;
+  background: #2196f3;
+  color: white;
+}
+
+.status-orange {
+  border-radius: 20px;
+  padding: 7px 15px;
+  border: 2px solid #ff9800;
+  background: #ff9800;
+  color: white;
+}
+
+.status-red {
+  border-radius: 20px;
+  padding: 7px 15px;
+  border: 2px solid #ff5722;
+  background: #ff5722;
+  color: white;
 }
 
 //////////////////////
