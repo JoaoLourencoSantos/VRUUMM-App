@@ -48,14 +48,14 @@ rabbiMQ.connect(AMQP_URL, function (error, connection) {
       }
 
       const key =
-        "user-rents-" + socket.handshake.auth.token.toString() + "-key";
+        "user.rents." + socket.handshake.auth.token.toString() + ".key";
 
       channel.assertExchange(AMQP_EXCHANGE, "topic", {
         durable: false,
       });
 
       channel.assertQueue(
-        AMQP_QUEUE,
+        "user-rents-" + socket.handshake.auth.token.toString() + "-queue",
         {
           exclusive: true,
         },
