@@ -14,14 +14,14 @@ import { ToastService } from './../../services/toast.service';
   styleUrls: ['./aprove.component.scss'],
 })
 export class AproveComponent implements OnInit {
-  public $store: BehaviorSubject<StoreDTO>;
+  public observableData$: BehaviorSubject<StoreDTO>;
 
   constructor(
     public consumer: ConsumerService,
     private rentService: RentService,
     private toastService: ToastService
   ) {
-    this.$store = consumer.getMessages();
+    this.observableData$ = consumer.getMessages();
   }
 
   ngOnInit(): void {}

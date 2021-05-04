@@ -6,8 +6,9 @@
 
   <section class="list-solicitation">
 
-    <div class="box-solicitation" *ngFor="let item of (this.$store |async).list">
+    <div class="box-solicitation" *ngFor="let item of (this.observableData$ |async).list">
       <div class="left-side"><img src="{{getImage(item.usuarioLocatario?item.usuarioLocatario.nome:'')}}" alt=""></div>
+
       <div class="right-side">
         <div>
           <div class="label-details">Carro</div>
