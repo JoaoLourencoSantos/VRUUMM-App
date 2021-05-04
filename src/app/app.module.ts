@@ -11,6 +11,10 @@ import { AppComponent } from './app.component';
 import { LoaderInterceptor } from './core/interceptor/loader.interceptor';
 import { SocketService } from './core/socket/socket.service';
 import { SharedModule } from './shared/modules/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RentReducer } from './core/store/reducers/rents.reducer';
+import { SummaryReducer } from './core/store/reducers/summary.reducer';
 
 export const customCurrencyMaskConfig = {
   align: 'left',
@@ -42,6 +46,10 @@ export const customCurrencyMaskConfig = {
     }),
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
     NgxMaskModule.forRoot(),
+    StoreModule.forRoot({ rents: RentReducer, summary: SummaryReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

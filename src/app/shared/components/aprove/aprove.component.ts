@@ -62,6 +62,7 @@ export class AproveComponent implements OnInit {
         this.toastService.successAlert();
 
         this.consumer.remove(code);
+        this.rentService.populate();
       },
       ({ error }) => {
         this.toastService.baseWarnAlertWithMessage(error.mensagem);

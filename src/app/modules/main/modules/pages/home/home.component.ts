@@ -1,3 +1,5 @@
+import { SummaryState } from './../../../../../core/store/reducers/summary.reducer';
+import { RentState } from './../../../../../core/store/reducers/rents.reducer';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -76,60 +78,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   private populateDataSource(): void {
-    this.rentService.find().subscribe((result: SolicitationDTO[]) => {
+    this.rentService.rentsState.subscribe((result: RentState) => {
       if (!result) return;
-      this.dataSource = new MatTableDataSource<SolicitationDTO>(result);
+      this.dataSource = new MatTableDataSource<SolicitationDTO>(result.rents);
       this.dataSource.paginator = this.paginator;
     });
   }
 
   private populateSummary(): void {
-    this.rentService.summary().subscribe((result: SummaryDTO) => {
+    this.rentService.summaryState.subscribe((result: SummaryState) => {
       if (!result) return;
 
-      this.dataTotalizators = [];
-
-      this.dataTotalizators.push(
-        this.buildTotalizator(
-          'green',
-          'Finalizados',
-          result.quantidadeDeAlugueisFinalizados
-        )
-      );
-      this.dataTotalizators.push(
-        this.buildTotalizator(
-          'blue',
-          'Em andamento',
-          result.quantidadeDeAlugueisEmAndamento
-        )
-      );
-      this.dataTotalizators.push(
-        this.buildTotalizator(
-          'orange',
-          'Pendentes',
-          result.quantidadeDeAlugueisPendentes
-        )
-      );
-      this.dataTotalizators.push(
-        this.buildTotalizator(
-          'red',
-          'Recusados',
-          result.quantidadeDeAlugueisRejeitados
-        )
-      );
+      this.dataTotalizators = result.rents;
     });
-  }
-
-  private buildTotalizator(
-    color: string,
-    name: string,
-    value: number | string
-  ): any {
-    return {
-      name: name,
-      value: value,
-      color: color,
-    };
   }
 
   public showCarDetails({ carroAlugado }: SolicitationDTO): void {
@@ -201,6 +162,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.toastService.successAlert();
 
         this.populate();
+        this.rentService.populate();
       },
       ({ error }) => {
         this.toastService.baseWarnAlertWithMessage(error.mensagem);
