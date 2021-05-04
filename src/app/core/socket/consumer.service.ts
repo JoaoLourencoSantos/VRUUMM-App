@@ -61,7 +61,7 @@ export class ConsumerService {
 
     data.isEmpty = data.list.length === 0;
 
-    //this.populate(data);
+    this.populate(data);
   }
 
   private populate(value: StoreDTO): void {
