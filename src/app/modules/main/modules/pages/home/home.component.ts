@@ -79,6 +79,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.rentService.find().subscribe((result: SolicitationDTO[]) => {
       if (!result) return;
       this.dataSource = new MatTableDataSource<SolicitationDTO>(result);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

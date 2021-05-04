@@ -42,7 +42,7 @@ export class ConsumerService {
     this.populate(data);
   }
 
-  public remove(id: String): void {
+  public remove(id: number | String): void {
     const data: StoreDTO = JSON.parse(
       localStorage.getItem('vruumm-moment-data')
     );
@@ -51,15 +51,17 @@ export class ConsumerService {
       return;
     }
 
-    console.log(data);
+    console.log(' [*] Removing data - ' + id);
 
-    data.list.filter((element) => {
-      return element.codigo !== id;
-    });
+    data.list = data.list
+      .map((element: any) => JSON.parse(element))
+      .filter((element) => {
+        return Number(element.codigo) !== Number(id);
+      });
 
     data.isEmpty = data.list.length === 0;
 
-    this.populate(data);
+    //this.populate(data);
   }
 
   private populate(value: StoreDTO): void {
