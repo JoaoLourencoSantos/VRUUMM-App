@@ -4,7 +4,6 @@ export class UserPatchDTO {
   email: string;
   nome: string;
   cpf: string;
-  senha: string;
   numeroTelefone: string;
 
   cepEndereco: string;
@@ -18,7 +17,6 @@ export class UserPatchDTO {
     this.email = user.email || null;
     this.nome = user.nome || null;
     this.cpf = user.cpf || null;
-    this.senha = user.senha || null;
     this.numeroTelefone = user.numeroTelefone || null;
 
     this.cepEndereco = user.endereco.cep || null;

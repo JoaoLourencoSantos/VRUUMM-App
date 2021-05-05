@@ -1,15 +1,14 @@
-import { SummaryState } from './../../../../../core/store/reducers/summary.reducer';
-import { RentState } from './../../../../../core/store/reducers/rents.reducer';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RentStateEnum } from 'src/app/shared/models/enum/rent.state.enum';
 
+import { RentState } from './../../../../../core/store/reducers/rents.reducer';
+import { SummaryState } from './../../../../../core/store/reducers/summary.reducer';
 import { CarDetailsComponent } from './../../../../../shared/components/details/car-details/car-details.component';
 import { UserDetailsComponent } from './../../../../../shared/components/details/user-details/user-details.component';
 import { SolicitationDTO } from './../../../../../shared/models/dto/solicitation.dto';
-import { SummaryDTO } from './../../../../../shared/models/dto/summary.dto';
 import { ToastService } from './../../../../../shared/services/toast.service';
 import { RentService } from './../../services/rent.service';
 
@@ -35,34 +34,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<SolicitationDTO>([]);
 
-  dataTotalizators: any[] = [
-    {
-      name: 'Finalizados',
-      value: '0',
-      color: 'green',
-    },
-    {
-      name: 'Em andamento',
-      value: '0',
-      color: 'blue',
-    },
-    {
-      name: 'Solicitações',
-      value: '0',
-      color: 'orange',
-    },
-    {
-      name: 'Recusados',
-      value: '0',
-      color: 'red',
-    },
-  ];
+  dataTotalizators: any[] = [];
 
   constructor(
     private rentService: RentService,
     public dialog: MatDialog,
     private toastService: ToastService
-  ) {}
+  ) {
+    this.rentService.populate();
+  }
 
   ngOnInit(): void {
     this.populate();

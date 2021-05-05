@@ -48,6 +48,8 @@ export class SocketService {
   }
 
   public disconnect() {
+    if (!this.socket) return;
+
     this.socket.close();
     this.socket.disconnect();
   }

@@ -14,9 +14,4 @@ export const FindSummary = createAction(
   })
 );
 
-export const ClearSummary = createAction(
-  SummaryActionEnum.CLEAR_ALL,
-  (payload: SummaryState) => ({
-    payload,
-  })
-);
+export const ClearSummary = createAction(SummaryActionEnum.CLEAR_ALL);

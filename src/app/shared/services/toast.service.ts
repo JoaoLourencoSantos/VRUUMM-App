@@ -8,51 +8,27 @@ export class ToastService {
   constructor(private _toast: ToastrService) {}
 
   errorAlert() {
-    this.show(
-      `Erro ao executar esta ação!`,
-      'WARNING',
-      'Opss...'
-    );
+    this.show(`Erro ao executar esta ação!`, 'WARNING', 'Opss...');
   }
 
   errorAuth(motivo: string) {
-    this.show(
-      `${motivo}`,
-      'WARNING',
-      'Opss...'
-    );
+    this.show(`${motivo}`, 'WARNING', 'Opss...');
   }
 
   baseWarnAlertWithMessage(motivo: string) {
-    this.show(
-      `${motivo}`,
-      'WARNING',
-      'Opss...'
-    );
+    this.show(`${motivo}`, 'WARNING', 'Opss...');
   }
 
   errorAlertWithMessage(motivo: string) {
-    this.show(
-      `Houve algum erro: ${motivo}`,
-      'ERROR',
-      'Opss...'
-    );
+    this.show(`Houve algum erro: ${motivo}`, 'ERROR', 'Opss...');
   }
 
   infoErroAlert() {
-    this.show(
-      'Preencha corretamente as informações!',
-      'ERROR',
-      'Opss...'
-    );
+    this.show('Preencha corretamente as informações!', 'ERROR', 'Opss...');
   }
 
   successAlert() {
-    this.show(
-      'A operação foi concluida!',
-      'SUCCESS',
-      'Sucesso!!!'
-    );
+    this.show('A operação foi concluida!', 'SUCCESS', 'Sucesso!!!');
   }
 
   show(message: string, type: string | 'SUCCESS', title?: string): void {

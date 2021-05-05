@@ -31,7 +31,6 @@ export class LoginService {
         this.setSession(response.corpo.codigo);
       })
       .catch(({ error }) => {
-
         if (error) {
           result.sucess = false;
           result.message = error.mensagem;

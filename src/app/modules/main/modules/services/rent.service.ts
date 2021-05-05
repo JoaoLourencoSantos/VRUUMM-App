@@ -7,8 +7,8 @@ import { SolicitationDTO } from 'src/app/shared/models/dto/solicitation.dto';
 import { RentStateEnum } from 'src/app/shared/models/enum/rent.state.enum';
 
 import { environment } from './../../../../../environments/environment';
-import { FindRents } from './../../../../core/store/actions/rents.action';
-import { FindSummary } from './../../../../core/store/actions/summary.action';
+import { ClearRents, FindRents } from './../../../../core/store/actions/rents.action';
+import { ClearSummary, FindSummary } from './../../../../core/store/actions/summary.action';
 import { RentState } from './../../../../core/store/reducers/rents.reducer';
 import { SummaryState } from './../../../../core/store/reducers/summary.reducer';
 import { ResponseDTO } from './../../../../shared/models/dto/response.dto';
@@ -41,6 +41,11 @@ export class RentService {
 
   public get summaryState() {
     return this.summaryState$;
+  }
+
+  public clear() {
+    this.store.dispatch(ClearRents());
+    this.store.dispatch(ClearSummary());
   }
 
   public populate() {

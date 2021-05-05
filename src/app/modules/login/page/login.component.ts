@@ -77,17 +77,22 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loginService.create(this.newUser).subscribe((result) => {
-      if (result && !result.sucesso) {
-        this.toast.errorAuth(result.mensagem);
-        return;
+    this.loginService.create(this.newUser).subscribe(
+      (result) => {
+        if (result && !result.sucesso) {
+          this.toast.errorAuth(result.mensagem);
+          return;
+        }
+
+        this.loginService.setSession(result.corpo.codigoUsuarioCadastrado);
+
+        this.toast.successAlert();
+
+        this.router.navigate(['/', 'app', 'home']);
+      },
+      ({ error }) => {
+        this.toast.errorAuth(error.mensagem);
       }
-
-      this.loginService.setSession(result.corpo.codigoUsuarioCadastrado);
-
-      this.toast.successAlert();
-
-      this.router.navigate(['/', 'app', 'home']);
-    });
+    );
   };
 }

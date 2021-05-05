@@ -13,9 +13,4 @@ export const FindRents = createAction(
   })
 );
 
-export const ClearRents = createAction(
-  RentActionEnum.CLEAR_ALL,
-  (payload: RentState) => ({
-    payload,
-  })
-);
+export const ClearRents = createAction(RentActionEnum.CLEAR_ALL);

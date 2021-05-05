@@ -1,13 +1,14 @@
-import { SocketService } from './../../../core/socket/socket.service';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { ConsumerService } from './../../../core/socket/consumer.service';
-import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
+import { StoreDTO } from '../../models/dto/store.dto';
 import { AuthService } from '../../services/auth.service';
 import { AproveComponent } from '../aprove/aprove.component';
-import { StoreDTO } from '../../models/dto/store.dto';
+import { ConsumerService } from './../../../core/socket/consumer.service';
+import { SocketService } from './../../../core/socket/socket.service';
+import { RentService } from './../../../modules/main/modules/services/rent.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit {
     public dialog: MatDialog,
     private authService: AuthService,
     public consumer: ConsumerService,
-    private socket: SocketService
+    private socket: SocketService,
+    private restService: RentService
   ) {
     this.page = this.activateRoute;
     this.$store = this.consumer.getMessages();
@@ -53,6 +55,7 @@ export class HeaderComponent implements OnInit {
   public logout() {
     this.authService.logout();
     this.socket.disconnect();
+    this.restService.clear();
 
     this.router.navigate(['/login']);
   }
