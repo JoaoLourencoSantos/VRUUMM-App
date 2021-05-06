@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.rentService.summaryState.subscribe((result: SummaryState) => {
       if (!result) return;
 
+
       this.dataTotalizators = result.rents;
     });
   }
@@ -83,6 +84,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dialog.open(UserDetailsComponent, {
       data: usuarioLocatario,
     });
+  }
+
+  public enableActionRuning({ situacao }: SolicitationDTO): boolean {
+    if (situacao === 'EM_ANDAMENTO') {
+      return true;
+    }
+
+    return false;
   }
 
   public enableAction({ situacao }: SolicitationDTO): boolean {
@@ -109,6 +118,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return 'status-green';
   }
 
+  public finish({ codigo, situacao }: SolicitationDTO) {
+    if (situacao !== 'EM_ANDAMENTO') {
+      this.toastService.baseWarnAlertWithMessage(
+        'Esta solicitação já foi aprovada!'
+      );
+
+      return;
+    }
+
+    const date: string = new Date(
+      Date.now() - 1.8 * Math.pow(10, 7)
+    ).toISOString();
+
+    console.log(date);
+
+    this.update(codigo, 'FINALIZADO' as RentStateEnum, date);
+  }
+
   public aprove({ codigo, situacao }: SolicitationDTO) {
     if (situacao !== 'PENDENTE') {
       this.toastService.baseWarnAlertWithMessage(
@@ -129,8 +156,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.update(codigo, 'REJEITADO' as RentStateEnum);
   }
 
-  private update(code: number | string, status: RentStateEnum) {
-    this.rentService.update(code, status).subscribe(
+  private update(code: number | string, status: RentStateEnum, date?: string) {
+    this.rentService.update(code, status, date).subscribe(
       (result) => {
         if (!result) return;
 

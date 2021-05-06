@@ -36,7 +36,7 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="devolution">
           <th mat-header-cell *matHeaderCellDef> Data de devolução </th>
-          <td mat-cell *matCellDef="let element"> {{element.dataDevolucao || "-"}} </td>
+          <td mat-cell *matCellDef="let element"> {{(element.dataDevolucaoCarro | date : 'dd/MM/yyyy') || "-"}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
@@ -75,9 +75,15 @@
                 class="label-action {{this.enableAction(element) ? 'color-green' :'disabled-icon'}}"
                 matTooltipPosition="above" matTooltip="Aceitar!" matTooltipClass="tooltip-green">check_circle
               </mat-icon>
+
               <mat-icon (click)="this.reprove(element)"
                 class="label-action {{this.enableAction(element) ? 'color-red' :'disabled-icon'}}"
                 matTooltipPosition="above" matTooltip="Reprovar!" matTooltipClass="tooltip-red">cancel
+              </mat-icon>
+
+              <mat-icon (click)="this.finish(element)"
+                class="label-action {{this.enableActionRuning(element) ? 'color-green' :'disabled-icon'}}"
+                matTooltipPosition="above" matTooltip="Finalizar!" matTooltipClass="tooltip-green">assignment_turned_in
               </mat-icon>
             </div>
           </td>

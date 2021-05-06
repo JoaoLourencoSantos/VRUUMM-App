@@ -9,7 +9,7 @@ export class SolicitationDTO {
 
   dataInicioReserva: string;
   dataFimReserva: string;
-  dataDevolucao: string;
+  dataDevolucaoCarro: string;
   situacao: string;
   precoTotal?: number | string;
   usuarioLocatario: SimpleUserDTO;
