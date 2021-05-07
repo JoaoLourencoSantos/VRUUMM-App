@@ -7,6 +7,7 @@ export class UserPatchDTO {
   numeroTelefone: string;
 
   cepEndereco: string;
+  localidadeEndereco: string;
   logradouroEndereco: string;
   complementoEndereco: string;
   bairroEndereco: string;
@@ -20,6 +21,7 @@ export class UserPatchDTO {
     this.numeroTelefone = user.numeroTelefone || null;
 
     this.cepEndereco = user.endereco.cep || null;
+    this.localidadeEndereco = user.endereco.localidade || null;
     this.logradouroEndereco = user.endereco.logradouro || null;
     this.complementoEndereco = user.endereco.complemento || null;
     this.bairroEndereco = user.endereco.bairro || null;

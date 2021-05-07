@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatChipsModule} from '@angular/material/chips';
 
 const material = [
   MatFormFieldModule,
@@ -30,7 +31,8 @@ const material = [
   MatButtonModule,
   MatDividerModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatChipsModule
 ];
 
 @NgModule({

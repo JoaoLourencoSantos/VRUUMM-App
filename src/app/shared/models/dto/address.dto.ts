@@ -1,6 +1,7 @@
 export class AddressDTO {
   codigo?: number = null;
   cep: string = null;
+  localidade: string = null;
   logradouro: string = null;
   numero: string = null;
   complemento: string = null;

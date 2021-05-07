@@ -3,6 +3,11 @@
   <div class="totalizators">
 
     <div *ngFor="let item of this.dataTotalizators" class="totalizator {{item.color}}">
+
+      <mat-icon class="filter-icon" matTooltipPosition="left" matTooltip="Filtrar" matTooltipClass="tooltip-white">
+        filter_list
+      </mat-icon>
+
       <div class="total">
         <span>
           {{item.value}}
@@ -11,11 +16,11 @@
       <div class="name">
         {{item.name}}
       </div>
+
     </div>
 
   </div>
   <div class="list-rents">
-
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">

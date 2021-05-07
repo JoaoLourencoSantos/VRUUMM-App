@@ -67,10 +67,16 @@
 
       </div>
 
-      <div class="lines">
+      <div class="lines two-lines">
         <mat-form-field appearance="outline">
           <mat-label>Endereço<span class="input-required">*</span></mat-label>
           <input name="logradouro" matInput [(ngModel)]="this.address.logradouro" readonly>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade<span class="input-required">*</span></mat-label>
+          <input name="localidade" matInput [(ngModel)]="this.address.localidade" readonly>
         </mat-form-field>
 
         <mat-form-field appearance="outline">

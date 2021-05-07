@@ -35,10 +35,18 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.addressService.find(this.address.cep).subscribe((result) => {
-      if (result) {
-        this.address = { ...result };
+    this.addressService.find(this.address.cep).subscribe((result: any) => {
+      if (!result) return;
+
+      if (result.erro) {
+        this.toastService.baseWarnAlertWithMessage(
+          'O CEP não pode ser encontrado, tente novamente!'
+        );
+
+        return;
       }
+
+      this.address = { ...result };
     });
   }
 

@@ -53,6 +53,14 @@ section.box-content {
       border-radius: 10px;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.479);
 
+      .filter-icon {
+        right: 0px;
+        left: 10%;
+        margin-left: 80%;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+
       .total {
         width: 100%;
         height: 70%;
