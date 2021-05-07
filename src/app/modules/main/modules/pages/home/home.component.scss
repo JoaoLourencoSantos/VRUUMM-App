@@ -46,7 +46,7 @@ section.box-content {
       flex-direction: column;
       align-items: center;
 
-      height: 90%;
+      height: 100%;
       width: 20%;
 
       padding: 15px;
@@ -69,8 +69,12 @@ section.box-content {
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        font-size: 4.5rem;
         font-weight: bolder;
+        font-size: 4.5rem;
+
+        @media screen and (max-width: 1500px) {
+          font-size: 3rem;
+        }
       }
 
       .name {
@@ -81,8 +85,12 @@ section.box-content {
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        font-size: 1.5rem;
         font-weight: bolder;
+        font-size: 1.5rem;
+
+        @media screen and (max-width: 1500px) {
+          font-size: 1.2rem;
+        }
       }
     }
   }

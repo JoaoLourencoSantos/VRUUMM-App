@@ -1,5 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { SummaryTotalDTO } from './../../../shared/models/dto/summary.total.dto';
+import { RentStateEnum } from './../../../shared/models/enum/rent.state.enum';
 import { ClearSummary, FindSummary } from './../actions/summary.action';
 
 export class SummaryState {
@@ -17,26 +19,30 @@ const _summaryReducer = createReducer(
     ClearSummary,
     (state) =>
       (state = new SummaryState([
-        {
-          name: 'Finalizados',
-          value: '0',
-          color: 'green',
-        },
-        {
-          name: 'Em andamento',
-          value: '0',
-          color: 'blue',
-        },
-        {
-          name: 'Pendentes',
-          value: '0',
-          color: 'orange',
-        },
-        {
-          name: 'Recusados',
-          value: '0',
-          color: 'red',
-        },
+        new SummaryTotalDTO(
+          'Finalizados',
+          '0',
+          'green',
+          'FINALIZADO' as RentStateEnum
+        ),
+        new SummaryTotalDTO(
+          'Em andamento',
+          '0',
+          'blue',
+          'EM_ANDAMENTO' as RentStateEnum
+        ),
+        new SummaryTotalDTO(
+          'Pendentes',
+          '0',
+          'orange',
+          'PENDENTE' as RentStateEnum
+        ),
+        new SummaryTotalDTO(
+          'Recusados',
+          '0',
+          'red',
+          'REJEITADO' as RentStateEnum
+        ),
       ]))
   )
 );

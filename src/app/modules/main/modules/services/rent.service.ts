@@ -19,6 +19,7 @@ import { RentState } from './../../../../core/store/reducers/rents.reducer';
 import { SummaryState } from './../../../../core/store/reducers/summary.reducer';
 import { ResponseDTO } from './../../../../shared/models/dto/response.dto';
 import { SummaryDTO } from './../../../../shared/models/dto/summary.dto';
+import { SummaryTotalDTO } from './../../../../shared/models/dto/summary.total.dto';
 import { AuthService } from './../../../../shared/services/auth.service';
 
 @Injectable({
@@ -62,45 +63,24 @@ export class RentService {
     this.summary().subscribe((result: SummaryDTO) => {
       if (!result) return;
 
-      let dataTotalizators = [];
-
-      dataTotalizators.push(
-        this.buildTotalizator(
-          'green',
-          'Finalizados',
-          result.quantidadeDeAlugueisFinalizados
-        )
+      this.store.dispatch(
+        FindSummary(new SummaryState(this.buildList(result)))
       );
-      dataTotalizators.push(
-        this.buildTotalizator(
-          'blue',
-          'Em andamento',
-          result.quantidadeDeAlugueisEmAndamento
-        )
-      );
-      dataTotalizators.push(
-        this.buildTotalizator(
-          'orange',
-          'Pendentes',
-          result.quantidadeDeAlugueisPendentes
-        )
-      );
-      dataTotalizators.push(
-        this.buildTotalizator(
-          'red',
-          'Recusados',
-          result.quantidadeDeAlugueisRejeitados
-        )
-      );
-
-      this.store.dispatch(FindSummary(new SummaryState(dataTotalizators)));
     });
   }
 
-  find(): Observable<SolicitationDTO[]> {
+  public populateListWithFilter(status?: RentStateEnum) {
+    this.find(status).subscribe((result: SolicitationDTO[]) => {
+      this.store.dispatch(FindRents(new RentState(result)));
+    });
+  }
+
+  find(status?: RentStateEnum): Observable<SolicitationDTO[]> {
     return this.http
       .get<ResponseDTO>(
-        `${this.API_BASEPATH}/alugueis?codigoUsuarioLocador=${this.auth.session}`,
+        `${this.API_BASEPATH}/alugueis?codigoUsuarioLocador=${
+          this.auth.session
+        }&situacao=${status || ''}`,
         {
           headers: { 'Content-Type': 'application/json' },
         }
@@ -144,15 +124,45 @@ export class RentService {
     );
   }
 
-  private buildTotalizator(
-    color: string,
-    name: string,
-    value: number | string
-  ): any {
-    return {
-      name: name,
-      value: value,
-      color: color,
-    };
+  private buildList(data: SummaryDTO): SummaryTotalDTO[] {
+    let dataTotalizators = [];
+
+    dataTotalizators.push(
+      new SummaryTotalDTO(
+        'Finalizados',
+        data.quantidadeDeAlugueisFinalizados,
+        'green',
+        'FINALIZADO' as RentStateEnum
+      )
+    );
+
+    dataTotalizators.push(
+      new SummaryTotalDTO(
+        'Em andamento',
+        data.quantidadeDeAlugueisEmAndamento,
+        'blue',
+        'EM_ANDAMENTO' as RentStateEnum
+      )
+    );
+
+    dataTotalizators.push(
+      new SummaryTotalDTO(
+        'Pendentes',
+        data.quantidadeDeAlugueisPendentes,
+        'orange',
+        'PENDENTE' as RentStateEnum
+      )
+    );
+
+    dataTotalizators.push(
+      new SummaryTotalDTO(
+        'Recusados',
+        data.quantidadeDeAlugueisRejeitados,
+        'red',
+        'REJEITADO' as RentStateEnum
+      )
+    );
+
+    return dataTotalizators;
   }
 }

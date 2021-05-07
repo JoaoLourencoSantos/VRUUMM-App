@@ -4,8 +4,10 @@
 
     <div *ngFor="let item of this.dataTotalizators" class="totalizator {{item.color}}">
 
-      <mat-icon class="filter-icon" matTooltipPosition="left" matTooltip="Filtrar" matTooltipClass="tooltip-white">
-        filter_list
+      <mat-icon (click)="this.filter(item.status)" class="filter-icon" matTooltipPosition="left"
+        matTooltip=" {{ item.status === this.currentStateFilterEnum? 'Remover filtro': 'Filtrar'}}"
+        matTooltipClass="tooltip-white">
+        {{ item.status === this.currentStateFilterEnum? 'close': 'filter_list'}}
       </mat-icon>
 
       <div class="total">

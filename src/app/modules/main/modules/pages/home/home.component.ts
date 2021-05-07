@@ -9,6 +9,7 @@ import { SummaryState } from './../../../../../core/store/reducers/summary.reduc
 import { CarDetailsComponent } from './../../../../../shared/components/details/car-details/car-details.component';
 import { UserDetailsComponent } from './../../../../../shared/components/details/user-details/user-details.component';
 import { SolicitationDTO } from './../../../../../shared/models/dto/solicitation.dto';
+import { SummaryTotalDTO } from './../../../../../shared/models/dto/summary.total.dto';
 import { ToastService } from './../../../../../shared/services/toast.service';
 import { RentService } from './../../services/rent.service';
 
@@ -32,9 +33,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   stateEnum = RentStateEnum;
 
+  currentStateFilterEnum: RentStateEnum = null;
+
   dataSource = new MatTableDataSource<SolicitationDTO>([]);
 
-  dataTotalizators: any[] = [];
+  dataTotalizators: SummaryTotalDTO[] = [];
 
   constructor(
     private rentService: RentService,
@@ -68,8 +71,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private populateSummary(): void {
     this.rentService.summaryState.subscribe((result: SummaryState) => {
       if (!result) return;
-
-
       this.dataTotalizators = result.rents;
     });
   }
@@ -154,6 +155,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     this.update(codigo, 'REJEITADO' as RentStateEnum);
+  }
+
+  public filter(status: RentStateEnum) {
+    if (this.currentStateFilterEnum === status) {
+      this.currentStateFilterEnum = null;
+
+      this.rentService.populateListWithFilter();
+
+      return;
+    }
+
+    this.currentStateFilterEnum = status;
+
+    if (!status) {
+      return;
+    }
+
+    this.rentService.populateListWithFilter(status);
   }
 
   private update(code: number | string, status: RentStateEnum, date?: string) {
