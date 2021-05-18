@@ -32,10 +32,17 @@
         <mat-card-subtitle>{{car.marca}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <mat-icon (click)="this.editCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para editar"
-          matTooltipClass="tooltip-vruumm">edit</mat-icon>
-        <mat-icon (click)="this.deleteCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para deletar"
-          matTooltipClass="tooltip-vruumm">delete</mat-icon>
+
+        <div class="box-reinted" *ngIf='car.atualmenteAlugado'>
+          <span>Alugado</span>
+        </div>
+
+        <div class="box-actions" *ngIf='!car.atualmenteAlugado'>
+          <mat-icon (click)="this.editCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para editar"
+            matTooltipClass="tooltip-vruumm">edit</mat-icon>
+          <mat-icon (click)="this.deleteCar(car)" matTooltipPosition="above" matTooltip="Clique aqui para deletar"
+            matTooltipClass="tooltip-vruumm">delete</mat-icon>
+        </div>
       </mat-card-actions>
     </mat-card>
   </section>

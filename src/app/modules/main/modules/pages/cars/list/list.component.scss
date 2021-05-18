@@ -1,4 +1,4 @@
-@import "../../../../../../../variables.scss";
+import '../../../../../../../variables.scss';
 
 *:focus {
   outline: 0 !important;
@@ -114,18 +114,37 @@ section.box-list {
     .mat-card-actions {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
       border-top: 1.9px solid $primary;
 
-      color: #777777;
+      .box-reinted {
+        display: flex;
+        width: 100%;
+        justify-content: center;
 
-      cursor: pointer;
-
-      mat-icon {
-        &:hover {
-          color: $primary;
+        span {
+          background: $primary;
+          padding: 5px 25px;
+          border-radius: 15px;
+          color: white;
+          font-weight: 800;
+          font-size: 1rem;
         }
       }
+
+      .box-actions {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        cursor: pointer;
+        color: #777777;
+
+        mat-icon {
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+
     }
   }
 }

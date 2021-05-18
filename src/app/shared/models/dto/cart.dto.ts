@@ -15,6 +15,8 @@ export class CarDTO {
 
   public codigoUsuarioDonoDoCarro: number;
 
+  public atualmenteAlugado?: boolean = false;
+
   public static isValid(car: CarDTO) {
     return (
       car.modelo &&
